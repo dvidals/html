@@ -46,14 +46,14 @@ function SegundoGrado($a, $b, $c)
     }
 
     if ($bandera) {
-        var_dump($soluciones);
+        return $soluciones;
     } else {
-         var_dump($bandera);
+         return $bandera;
     }
 
 }
 
     
-    //echo SegundoGrado($a,$b,$c);
+   
     
     ?>

@@ -5,7 +5,7 @@ Crea un fichero que la incluya y la utilice
  */
 
 $a = 2;
-$b = 15;
+$b = 5;
 $c = 6;
 
 function SegundoGrado($a, $b, $c)
@@ -49,11 +49,11 @@ function SegundoGrado($a, $b, $c)
     }
 
     if ($bandera) {
-        var_dump($soluciones);
+            return $soluciones;
     } else {
-         var_dump($bandera);
+            return $bandera;
     }
 
 }
 
-echo SegundoGrado($a, $b, $c);
+var_dump( SegundoGrado($a, $b, $c));

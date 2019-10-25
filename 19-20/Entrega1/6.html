@@ -4,47 +4,52 @@ and open the template in the editor.
 -->
 <!DOCTYPE html>
 <html>
-    <head>
-        <title></title>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    </head>
-    <body>
-        
+
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+
+<body>
+
     <form method="post" action="6.php">
         <h3>Funciones de variables</h3>
         <p><b>Introduzca un valor y selecciona una función </b></p>
-        <input  name="v"><br>
-        
-        <input type="radio" name="variable" value="1"> isset<br>
+        <input name="v"><br>
+
+        <input type="radio" name="variable" value="1" checked="checked"> isset<br>
         <input type="radio" name="variable" value="2">is_null<br>
         <input type="radio" name="variable" value="3">empty<br>
         <input type="radio" name="variable" value="4">is_int<br>
-        <input type="radio" name="variable" value="5">is_float<br/>
-        <input type="radio" name="variable" value="6">is_bool<br/>
-        <input type="radio" name="variable" value="7">is_array<br/>
-        <input type="radio" name="variable" value="8">intval<br/>
-        <input type="radio" name="variable" value="9">floatval<br/>
-        <input type="radio" name="variable" value="10">boolval<br/>
-        <input type="radio" name="variable" value="11">strval<br/><br>
-        
-        <h3>Funciones de variables</h3>
-        <p><b>Introduzca un valor y selecciona una función </b></p>
-          <input  name="cadena"><br>
-        
-        <select name="cad" multiple size="7">
+        <input type="radio" name="variable" value="5">is_float<br />
+        <input type="radio" name="variable" value="6">is_bool<br />
+        <input type="radio" name="variable" value="7">is_array<br />
+        <input type="radio" name="variable" value="8">intval<br />
+        <input type="radio" name="variable" value="9">floatval<br />
+        <input type="radio" name="variable" value="10">boolval<br />
+        <input type="radio" name="variable" value="11">strval<br /><br>
 
-	<option value="1">strlen </option>
-	<option value="2">explode</option>
-	<option value="3">implode</option>
-        <option value="4">strcmp </option>
-        <option value="5">strtolower </option>
-        <option value="6">strtoupper </option>
-        <option value="7">str </option>
+        <h3>Funciones de strings</h3>
+        <p><b>Introduzca una cadena<br>
+                Si es necesario introduzca en el siguiente recuadro el separador, texto a buscar, etc. Luego selecciona
+                una función </b></p>
+        Cadena: <input type="text" name="cadena"><br>
+        Separador o cadena a buscar:<input type="text" name="separador"><br>
+
+        <select type="text" name="cad" size="5">
+
+            <option value="1">strlen </option>
+
+            <option value="4">strcmp </option>
+            <option value="5">strtolower </option>
+            <option value="6">strtoupper </option>
+            <option value="7">strstr </option>
 
         </select>
         <br><br>
-        <input type="submit" name="enviar" value="enviar"><br/>
+        <input type="submit" name="enviar" value="enviar"><br />
         <input type="reset" value="borrar" name="borrar" title="borrar" />
     </form>
-    </body>
+</body>
+
 </html>
