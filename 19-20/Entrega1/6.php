@@ -4,7 +4,10 @@ $v=$_POST['v'];
 $n=$_POST['variable'];
 $c=$_POST['cadena'];
 $cad=$_POST['cad'];
+$a=explode(",",$_POST['a']);
+$array=$_POST['array'];
 $separador=$_POST['separador'];
+
 if($n==1)var_dump (isset($v));
 if($n==2) var_dump(is_null($v));
 if($n==3) var_dump (empty($v));
@@ -23,14 +26,14 @@ if($cad==5)echo strtolower($c);
 if($cad==6)echo strtoupper($c);
 if($cad==7)echo strstr($c,$separador);
 echo "</br>";
-/*
-ksort($a);
-krsort($a);
-sort($a);
-rsort($a);
-array_values($a);
-array_keys($a);
-array_key_exists($a,$cla);
-count($a);
-*/
+
+if($array==1) var_dump(ksort($a));
+if($array==2) var_dump(krsort($a));
+if($array==3) echo sort($a);
+if($array==4) var_dump(rsort($a));
+if($array==5) echo array_values($a);
+if($array==6) echo array_keys($a);
+//if($array==7) echo array_key_exists($a,$cla);
+if($array==8) echo count($a);
+
 ?>
