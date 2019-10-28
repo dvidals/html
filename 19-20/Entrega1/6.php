@@ -4,23 +4,27 @@ $v=$_POST['v'];
 $n=$_POST['variable'];
 $c=$_POST['cadena'];
 $cad=$_POST['cad'];
-$a=explode(",",$_POST['a']);
+$a=explode(",",$_POST['a']);//explode transforma una cadena en un array
 $array=$_POST['array'];
 $separador=$_POST['separador'];
+$clave=$_POST['clave'];
 //var_dump($a);
 //echo"<br>";
 
-if($n==1)var_dump (isset($v));
+
+//Los is_float, is_int , etc si no se le hace un cast entienden que le entra un string, por eso no funcionan bien
+
+if($n==1) var_dump(isset($v));
 if($n==2) var_dump(is_null($v));
-if($n==3) var_dump (empty($v));
-if($n==4) var_dump (is_int($v));
+if($n==3) var_dump(empty($v));
+if($n==4) var_dump(is_int($v));
 if($n==5) var_dump(is_float($v));
-if($n==6)var_dump(is_bool($v));
-if($n==7)var_dump(is_array($v));
-if($n==8)var_dump(intval($v));
-if($n==9)var_dump(floatval($v));
-if($n==10)var_dump(boolval($v));
-if($n==11)var_dump(strval($v));
+if($n==6) var_dump(is_bool($v));
+if($n==7) var_dump(is_array($v));
+if($n==8) var_dump(intval($v));
+if($n==9) var_dump(floatval($v));
+if($n==10) var_dump(boolval($v));
+if($n==11) var_dump(strval($v));
 echo "</br>";
 if($cad==1) echo strlen($c);
 if($cad==4)echo strcmp($c,$separador);
@@ -47,9 +51,9 @@ if($array==4) {
 }
 if($array==5)  print_r(array_values($a));
 if($array==6) print_r(array_keys($a));
-//if($array==7) echo array_key_exists($a,$cla);
+if($array==7) var_dump(array_key_exists($clave,$a));
 if($array==8) echo count($a);
 if($array==9) var_dump(explode(",",$_POST['a']));
-if($array==10) echo implode(';',$a);
+if($array==10) echo implode(';',$a); //implode transforma un array en una cadena.
 
 ?>
