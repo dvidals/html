@@ -7,6 +7,8 @@ $cad=$_POST['cad'];
 $a=explode(",",$_POST['a']);
 $array=$_POST['array'];
 $separador=$_POST['separador'];
+//var_dump($a);
+//echo"<br>";
 
 if($n==1)var_dump (isset($v));
 if($n==2) var_dump(is_null($v));
@@ -27,13 +29,27 @@ if($cad==6)echo strtoupper($c);
 if($cad==7)echo strstr($c,$separador);
 echo "</br>";
 
-if($array==1) var_dump(ksort($a));
-if($array==2) var_dump(krsort($a));
-if($array==3) echo sort($a);
-if($array==4) var_dump(rsort($a));
-if($array==5) echo array_values($a);
-if($array==6) echo array_keys($a);
+if($array==1){
+    ksort($a);
+    var_dump($a);
+} 
+if($array==2){
+     krsort($a);
+     var_dump($a);
+}
+if($array==3) {
+    sort($a);
+    var_dump($a);
+}
+if($array==4) {
+    rsort($a);
+    var_dump($a);
+}
+if($array==5)  print_r(array_values($a));
+if($array==6) print_r(array_keys($a));
 //if($array==7) echo array_key_exists($a,$cla);
 if($array==8) echo count($a);
+if($array==9) var_dump(explode(",",$_POST['a']));
+if($array==10) echo implode(';',$a);
 
 ?>
