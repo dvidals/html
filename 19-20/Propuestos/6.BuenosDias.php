@@ -11,13 +11,16 @@ $hora;
 if(!empty($_POST['hora'])){
    if ($_POST['hora']>=6 and $_POST['hora']<=11) echo"¡Buenos días!";
    elseif($_POST['hora']>=12 and $_POST['hora']<=19) echo "¡Buenas tardes!";
-   else{
-      echo "¡Buenas noches!";
-      echo "$hora";
-   }
+   elseif(($_POST['hora']>=20 and $_POST['hora']<=24) or ($_POST['hora']>=0 and $_POST['hora']<=5)) echo "¡Buenas noches!";
+   else echo "La hora introducida no es correcta, sólo se admiten números enteros entre 0 y 24";
+   
 }
 
-else{
+else {
+
+
+
+
     
 ?>
 
