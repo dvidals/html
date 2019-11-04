@@ -23,8 +23,8 @@ function ordenar ($a){
     }
 */
 
-for ($i=0; $i<count($array);$i++){    
-$out=max($a)
+for ($i=0; $i<count($a);$i++){    
+$contenedor[$i]=max($a);
 foreach($a as $k=>$valor){
     /*if($a[$k]==max($a)){
         $contenedor[]=max($a);
@@ -32,9 +32,10 @@ foreach($a as $k=>$valor){
 
     }
     */
-    if($valor==max($a)) unset ($array[$k]);
-    $contenedor[]=max($a);
+    if($valor==max($a)){ 
+    //$contenedor[]=max($a);
     unset($a[$k]);
+    }
 }
     
 
