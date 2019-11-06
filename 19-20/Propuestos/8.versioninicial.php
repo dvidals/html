@@ -8,7 +8,9 @@ function ordenar ($a){
         if ($a[$i]==max($a)){
             $contenedor[$j]=$a[$i];
             $a[$i]="";
-         // for($i=0;$i<count($a);$i++)echo $a[$i]; //lleva implicito un break en la practica, por eso funcionaba cuando no teníamos el break.
+          for($i=0;$i<count($a);$i++)echo $a[$i]; //lleva ímplicito un break en la práctica, por eso funcionaba cuando no teníamos el break.
+          // Al hacer ese bucle for con el mismo índice $i que el for que lo contiene conseguimos llevarlo hasta el final del array por eso no elimina los máximos
+          // que estén después del máximo que se eliminó.
             break; // si le ponemos un break funciona, si no se lo ponemos el if se ejecuta dos veces en vez de una en alguna de las iteraciones
         }
         
