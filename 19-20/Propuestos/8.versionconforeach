@@ -12,12 +12,14 @@ foreach($a as $k=>$valor){
     
     if($valor==max($a)){ 
     //for($j=0;$j<count($a);$j++) echo $a[$j]; 
+    echo "Valor eliminado en esta iteración ".($i+1).": ". $a[$k];
     unset($a[$k]);
-    echo "elementos del $a después de la ".($i+1)." iteración: ".count($a).". Los siguientes: ";
-    for($j=0;$j<count($b);$j++) echo $a[$j]."-"; 
+    echo ". Elementos del $a después de la ".($i+1)." iteración: ".count($a).". Los siguientes: ";
+    for($j=0;$j<count($b);$j++) echo $a[$j]."-";  // Nota importante: no se puede usar $i hay que usa $j si no se pararía en la primera ejecución. 
     //break; si hacemos un break va todo perfecto, sino vuelve para atrás en determinadas ocaciones.
     }
 }
+   echo "<br>";
   print_r($a);  
    echo "<br>";
 }
