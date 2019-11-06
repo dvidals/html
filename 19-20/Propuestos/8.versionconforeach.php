@@ -1,5 +1,5 @@
 <?php
-error_reporting(E_ALL & ~E_NOTICE);
+error_reporting(E_ALL & ~E_NOTICE & ~E_WARNING);
 # Escribe un programa que ordene números enteros introducidos por teclado.
 $a=array(1,2,3,4,69,125,14,33,48,12);
 
@@ -17,7 +17,7 @@ foreach($a as $k=>$valor){
     unset($a[$k]);
     echo ". Elementos del $a después de la ".($i+1)." iteración: ".count($a).". Los siguientes: ";
     for($j=0;$j<count($b);$j++) echo $a[$j]."-";  // Nota importante: no se puede usar $i hay que usa $j si no se pararía en la primera ejecución. 
-    break; //si hacemos un break va todo perfecto, sino vuelve a evaluarse la condición del if siempre que después del máximo al que se le va hacer el unset el siguiente máximo esté
+    //break; //si hacemos un break va todo perfecto, sino vuelve a evaluarse la condición del if siempre que después del máximo al que se le va hacer el unset el siguiente máximo esté
     //siguiente  máximo esté a continuación de él. 
     }
 }
