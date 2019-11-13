@@ -1,0 +1,10 @@
+1. Es sencillo, se necesita un bucle que aumente un astérisco en cada paso de vuelta, el único pero sería centrar la pirámide, 
+yo lo he hecho directamente en el html con el atributo style=text-align:center.
+2. Es un poco más de idea feliz, pero tampoco es difícil. La función que yo he utilizado es substr . Parto de un string con los nueve asteriscos y le voy
+restando uno en cada vuelta del bucle en la función al ponerle en el segundo parámetro un uno hago que me lea "a partir" del primer elemento.
+Es decir, en cada vuelta muestra por pantalla todos los elementos menos el primero.
+3. Es muy sencillo.
+4. Es prácticamente igual, pero ahora se pasa por referencia.
+5. Posiblemente el más complicado, he hecho 2 versiones. En la primera he usado la función error_reporting() para que no me muestre los NOTICE por pantalla
+de esta forma la solución es más sencilla porque sólo necesito un if para mostrar todos los 0 que están rodeados de uno tanto 
+a la izquierda, derecha, arriba y abajo.
