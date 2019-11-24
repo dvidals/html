@@ -7,4 +7,26 @@ Es decir, en cada vuelta muestra por pantalla todos los elementos menos el prime
 4. Es prácticamente igual, pero ahora se pasa por referencia.
 5. Posiblemente el más complicado, he hecho 2 versiones. En la primera he usado la función error_reporting() para que no me muestre los NOTICE por pantalla
 de esta forma la solución es más sencilla porque sólo necesito un if para mostrar todos los 0 que están rodeados de uno tanto 
-a la izquierda, derecha, arriba y abajo.
+a la izquierda, derecha, arriba y abajo.En la segunda versión ya necesito unos cuantos condicionales más.
+6. Es sencillo
+7. También es sencillo, suele ser un ejemplo típico para usar un switch.
+8. Es sencillo utilizando sort, se complica enormemente usando bucles. Muy interesante descubrir como un break en el bucle es la única alternativa para una solución satisfactoria. Hice varias versiones y todas me han aportado algo de interés.
+9. Bueno, nivel medio, muy difícil tampoco es.
+10. No es fácil, pero lo más difícil para mi fue conseguir mostrar de forma decente el resultado por pantalla sin que quedaran las columnas descuadradas. Se utiliza implode para representar la solución, convertir el array en cadena
+11. Es complicadillo, se utiliza explode para convertir en array la cadena que le entra por POST y luego se trabaja con el array.
+12. Es sencillo si se sabe lo que es un array asociativo.
+13. No es fácil, sobre todo hay que conocer las funciones que se necesitan: strtoupper, strtolower, ucfirst, ucwords.
+14. Yo lo hice con la función substr, se puede hacer de más formas, pero es un poco de idea feliz también.
+15. Es fácil si se utiliza la función strstr, aunque sería mejor usar strpos.
+16. Es fácil si se utiliza la función basename que devuelve el último componente del nombre de una ruta, es decir, el fichero al que se está haciendo referencia.
+17. Se vuelve a utilizar la función strstr, pero se añade un tercer parámetro "TRUE" (por defecto es "False"), para que devuelva la parte de la cadena que está a la izquierda del elemento de búsqueda.
+18. He usado substr y no me ha resultado difícil
+19. Es fácil si se conoce la función str_replace.
+20. Se podrá hacer de mi maneras, pero yo he convertido las cadenas en arrays con str_split y luego he comparado elemento a elemento los arrays y si en algún elemento no coincidían una variable bandera que había definido cambiaba de valor a false, se para la ejecución y se muestra el texto indicando donde nos son iguales las cadenas.
+21. Sería igual que el 18.
+22. Se puede hacer de varias maneras, yo he puesto 2, con floatval seria un ejercicio sencillo porque floatval intenta convertir la cadena a número real y ya elimina los ceros a la izquierda.
+23. Tiene su dificultad, ambos apartados tienen cierta complicación.
+24. Es de los más complicados.
+25. Si se sabe la función que calcula el área de esas formas geométricas no tiene mucha complicación, sería más complicado el html del formulario que la parte de php.
+26. Es conocer la variable superglobal $_SERVER, un array que en cada uno de sus índices contiene parte de la información que nos piden el enunciado.
+
