@@ -1,5 +1,5 @@
 <!-- 24. Crear una página que compruebe la validez de DNIs. -->
-
+<!-- hay que revisar la función in_array explicar porqué (hay que pasar $number dígito a dígito el array tendría 10 valores: de 0 a 9-->
 <html>
 
 <body>
@@ -10,6 +10,8 @@
     </form>
 
     <?php
+
+
 
     define('ERROR_LONGITUD_INVALIDA', -1);
     define('ERROR_8_NUMEROS', -2);
