@@ -50,7 +50,7 @@ echo "<br/><br/>";
          if($v2==0){ 
             if(($a[$c1][$c2-1]==1 and $c2>0) or ($a[$c1][$c2+1]==1 and $c2<m-1) or ($a[$c1-1][$c2]==1 and $c1>0) or ($a[$c1+1][$c2]==1 and $c1<n-1)
                     or ($a[$c1-1][$c2-1]==1 and ($c1>0 and $c2>0)) or ($a[$c1+1][$c2-1]==1 and ($c1<n-1 and $c2>0))
-                    or ($a[$c1-1][$c2-1]==1 and ($c1>0 and $c2<m-1)) or ($a[$c1-1][$c2-1]==1 and ($c1<n-1 and $c2<m-1))){
+                    or ($a[$c1-1][$c2+1]==1 and ($c1>0 and $c2<m-1)) or ($a[$c1+1][$c2+1]==1 and ($c1<n-1 and $c2<m-1))){
                 echo "<b>".$v2."</b>";
             }
          else echo "$v2";
