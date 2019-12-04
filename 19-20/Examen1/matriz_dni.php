@@ -9,6 +9,7 @@
 
 
 <?php
+error_reporting(E_ALL ^ E_NOTICE);
 $matriz=explode(",",str_replace(" ","",$_POST['matriz']));
 if (strlen($_POST['matriz'])==0){
     $n=8;

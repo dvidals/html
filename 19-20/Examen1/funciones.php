@@ -1,7 +1,6 @@
 <?php
 
 function CrearDNI (){
-    $array=array();
     $numero=array();
     $letra="";
     $dni="";
