@@ -19,7 +19,7 @@ if (strlen($_POST['matriz'])==0){
      echo "Hay que introducir 1 número mayor que cero para matrices cuadradas  ó números mayores que cero separados por comas".
         " para matrices no cuadradas";  
  
-elseif(strlen($_POST['matriz'])==1){
+elseif(strlen($_POST['matriz'])==1){  //esto no es bueno porque no me escribe matrices cuadradas de más de un número
     $n=$_POST['matriz'];
     $m=$_POST['matriz'];
 }
