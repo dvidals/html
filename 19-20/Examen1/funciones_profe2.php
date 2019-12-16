@@ -2,22 +2,27 @@
 
 define ('PESO_ENTSUC', array(4,8,5,10,9,7,3,6));
 define ('PESO_CUENTA', array(1,2,4,8,5,10,9,7,3,6));
+
+class SoloNumerosException extends Exception{};
+class No20DigitosException extends Exception{};
+
 function codigo_cuenta_correcto($cuenta){
 
     
 
     
-    str_replace(" ","",$cuenta);
+    $cuenta=str_replace(" ","",$cuenta);
 
     if (!ctype_digit($cuenta)) {
+
         //se hace necesario al principio utilizar ctype_digit() para eliminar los números negativos.
     
-        //exit ('Una cuenta sólo está formada por números);
-        return FALSE;
+        throw new Exception('Una cuenta sólo está formada por números');
+       
 
     } else if(strlen($cuenta)!==20){
         //exist ('La cuenta debe estar formada por 20 dígitos');
-        return FALSE;
+        throw new No20DigitosException ();
     }
 
 $bloque_a=substr($cuenta,0,8);
@@ -55,4 +60,4 @@ function calcula_digito_control($bloque,$pesos){
         return $con;
 }
 
-var_dump(codigo_cuenta_correcto('00491500051234567892'));
+//var_dump(codigo_cuenta_correcto('00491500051234567892'));
