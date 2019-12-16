@@ -13,7 +13,9 @@ if(!empty($_POST['cuenta'])){
 $cuenta=$_POST['cuenta'];
 $cuenta=trim($cuenta);
 $cuenta=str_replace(" ","",$cuenta);
-if(strlen($cuenta)<>20 and strlen($cuenta)>=1)echo "Error: No es un número de cuenta válido, debe de tener 20 dígitos";
+if (!is_numeric($cuenta)) exit ('Una cuenta sólo está formada por números');
+
+else if(strlen($cuenta)<>20 and strlen($cuenta)>=1)echo "Error: No es un número de cuenta válido, debe de tener 20 dígitos";
 else{
 $a=substr($cuenta,0,8);
 $b=substr($cuenta,8,1);
