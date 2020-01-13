@@ -18,7 +18,7 @@ class Coche {
         $this->modelo=$modelo;
         $this->puertas=$puertas;
         self::$contador++; // es igual a ++self::$contador;
-        $this->id=self::$contador; //self es lo mismo que this, pero de manera estática (para propiedades de la clase y no de los objetos)
+        $this->id=self::$contador; //self es lo mismo que this, pero de manera estática, lleva :: en vez de flecha (para propiedades de la clase y no de los objetos)
 
         //las dos últimas líneas se pueden sustituir por: $this->id=++self::$contador;  primero hay que autoincrementar y luego asignar para que no exista coche
         // con ide cero.
@@ -41,7 +41,7 @@ class Coche {
 
 
 
-$focus2= new Coche("ford","focus","3"); //se ahorra escritura que cuando se construyó $focus;
+$focus2= new Coche("ford","focus","3"); 
 
 $coche1=new Coche ("ford", "focus", 3);
 echo 'coche1:<br/>';
