@@ -71,7 +71,7 @@ function __construct($username,$email){
     }
 
 
-    private static function check_email($email): bool{       //este método sólo se va a usar en esta clase, entonces le pongo private, no se puede llamar desde otro clase. 
+    private static function check_email($email): bool{  //este método sólo se va a usar en esta clase, entonces le pongo private, no se puede llamar desde otra clase. 
   //static es cuando es independiente de las propiedades del objeto, es un funcionamiento estructurado que no tiene nada que ver objetos.                                                                            
         return (filter_var($email,FILTER_VALIDATE_EMAIL)? TRUE: FALSE);
 
@@ -93,5 +93,9 @@ echo $u1->email;echo'<br/>';
 
 //$u1->setEmail('asda@asdad.asd');
 
-print_r(get_class_var('Usuario')); echo'<br/>';
-print_r(get_class_method('Usuario'));echo'<br/>';
+//print_r(get_class_var('Usuario')); echo'<br/>';
+//print_r(get_class_method('Usuario'));echo'<br/>';
+
+//importante(explicar): Cuando usábamos un constructor y el e-mail no era válido, aunque con el return del constructor se paraba la ejecución. El simple
+//hecho de llamar a esa función constructor nos crea el objeto. Esto se evita con excepciones, utilizando try y catch. Si no se cumple la condición del
+//try salta al catch y no se crea en el objeto (aunque el constructor esté en el try, no se ejecuta)
