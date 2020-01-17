@@ -23,6 +23,6 @@ $a = new Chachi;
 $b = new Chachi;
 //$b->setChachi('5', 4.1);
 $b->setChachi(5, 4);
-echo Chachi::$a;
+echo Chachi::$a.'<br/>';
 echo $b->b;
 $b = new Chachi;
