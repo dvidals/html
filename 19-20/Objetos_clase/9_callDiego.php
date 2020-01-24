@@ -21,13 +21,14 @@ class Tweet {
         var_dump($this->$property);
     }
 
-    public function __call($method, $parameters){
+    
+    public function __call($method, $parameters){                            //es un getter de métodos, se pueden llamar métodos protected y privados también.
         if (in_array($method, array('retweet', 'favourite'))) {
             return call_user_func_array(array($this, $method), $parameters);
             //return call_user_func_array('self::'.$method . '()', $parameters);
         }
     }
-
+    
 }
 
 $tweet = new Tweet(43, 'Hola que tal', array('retweets' => 23, 'favourites' => 17));
