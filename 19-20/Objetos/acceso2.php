@@ -60,3 +60,4 @@ echo '<br/>'. $n2->protected;
 //static class en Java: todas las variables y métodos tienen que ser estáticos.
 
 //diego.com.es/modificadores-y-herencia-de-clases-en-php.
+// 
