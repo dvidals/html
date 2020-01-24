@@ -25,7 +25,8 @@ class Tweet {
     public function __call($method, $parameters){                            //es un getter de métodos, se pueden llamar métodos protected y privados también.
         if (in_array($method, array('retweet', 'favourite'))) {
             return call_user_func_array(array($this, $method), $parameters);
-            //return call_user_func_array('self::'.$method . '()', $parameters);
+            //return call_user_func_array('self::'.$method . '()', $parameters); /tb válido
+            // return call_user_func_array("self::$method()", $parameters);  /tb válido.
         }
     }
     

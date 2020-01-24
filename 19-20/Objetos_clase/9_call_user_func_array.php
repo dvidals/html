@@ -1,7 +1,11 @@
 <?php
 
-function funcion($parametros){
-    echo 'función: ' . implode(', ',$parametros) . '<br/>';
+function funcion1($parametros){
+    echo 'función1: ' . implode(', ',$parametros) . '<br/>';
+}
+
+function funcion2($parametros){
+    echo 'función2: ' . implode('; ',$parametros) . '<br/>';
 }
 
 class Clase {
@@ -11,7 +15,17 @@ class Clase {
     
 }
 
-call_user_func('funcion',array('par1', 'par2', 'par3'));
+
+$funciones=array('funcion1','funcion2');
+
+foreach($funciones as $funcion){
+    call_user_func($funcion,array('par1', 'par2', 'par3'));
+
+}
+
+echo "<br/><br/>";
+call_user_func('funcion1',array('par1', 'par2', 'par3'));
+call_user_func('funcion2',array('par1', 'par2', 'par3'));
 
 
 call_user_func('Clase::metodo',array('par1', 'par2', 'par3'));
