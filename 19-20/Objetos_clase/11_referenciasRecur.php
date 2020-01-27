@@ -21,7 +21,7 @@ class Persona {
 }
 
 
-$pedro = new Persona("Pdro", Null); echo '<br/>';
+$pedro = new Persona("Pedro", Null);
 print_r($pedro);
 $pablo = new Persona("Pablo", array($pedro));
 $gabriel = new Persona("Gabriel", array($pedro));
@@ -30,6 +30,16 @@ var_dump($pedro);
 //print("<pre>".print_r($pedro,true)."</pre>");
 $pablo->nombre ="pablito";
 var_dump($pedro);
+
+
+$pablo2 = new Persona("pablito", array($pedro));
+$pablo3 = clone($pablo);
+var_dump($pablo==$pablo2);
+var_dump($pablo===$pablo2);
+var_dump($pablo==$pablo3);
+var_dump($pablo===$pablo3);
+var_dump($pablo==$pedro->amigos[0]);
+var_dump($pablo===$pedro->amigos[0]);
 
 
 
