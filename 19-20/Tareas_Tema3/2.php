@@ -14,6 +14,8 @@ A clase debe incluír un método de nome diasVivo que devolverá información re
 
  //https://www.baulphp.com/contar-dias-entre-fechas-php-ejemplos/
 
+ //https://desarrolloweb.com/articulos/calcular-dias-entre-dos-fechas-php.html
+
  /*
 
  function dias_transcurridos($fecha_i,$fecha_f)
@@ -44,7 +46,7 @@ echo dias_transcurridos('2012-07-01','2012-07-18');
     private $sexo;
     public $df;
 
-    function __construct($nome,$nacemento,$sexo)
+    function __construct($nome,$nacemento,$sexo='H')
     {
         $this->nome=$nome;
         $this->nacemento=$nacemento;
@@ -71,7 +73,7 @@ function get_format($d1,$d2) {
     $str .= ($df->invert == 1) ? ' - ' : '';
     if ($df->y > 0) {
         // anos
-        $str .= ($df->y > 1) ? $df->y . ' anos ' : $df->y . ' ano ';
+        $str .= ($df->y > 1) ? $df->y . ' años ' : $df->y . ' año ';
     } if ($df->m > 0) {
         // meses
         $str .= ($df->m > 1) ? $df->m . ' meses ' : $df->m . ' mes ';
@@ -81,8 +83,8 @@ function get_format($d1,$d2) {
     
     }
 
-    $str.= ', un total de '.(strtotime($d1)-strtotime($d2))/86400;
-    $str.=' días';
+    //$str.= ', un total de '.(strtotime($d1)-strtotime($d2))/86400; //strtotime trabaja con strings no con objetos
+    //$str.=' días';
 
     echo $str;
 }
@@ -104,7 +106,14 @@ function diasVivos($df) {
 
  }
 
- $date1 = new DateTime("1990-04-02");
+ 
+
+$date1 = DateTime::createFromFormat('Y-m-d',"1990-04-02");
 $date2 = new DateTime("now");
 //$diff = $date1->diff($date2);
 echo Persoa::get_format($date1,$date2);
+
+$fecha1=explode("-",$date1);
+echo $fecha1[0];
+
+var_dump($date1);

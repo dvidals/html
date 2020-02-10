@@ -1,6 +1,6 @@
 <?php
 
-$date = DateTime::createFromFormat('d/m/Y','17/01/2020'); //DateTime tiene un método estático llmado createFromFormat
+$date = DateTime::createFromFormat('d/m/Y','17/01/2020'); //DateTime tiene un método estático llamado createFromFormat
 $today = new DateTime(); //Devuelve un objeto DateTime
 var_dump($today);
 

@@ -27,7 +27,7 @@ class hijo_interfaz implements interfaz, saludo {
         echo "soy el hijo del interfaz...<br>";
     }
 
-    //Comprobar el error que se produce si no se implementa el método saluda
+    //Comprobar el error que se produce si no se implementa el método saludar
 
     function hola() {
         echo "Hola. He implementado la función saluda<br>";

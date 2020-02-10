@@ -17,6 +17,8 @@ class Cronometro {
 
     private function dame_instante() {
         $instante_actual = microtime(); //devuelve el tiempo que tarde en ejecutarse en microsegundos.
+        // microtime() devuelve un string en la forma "mseg seg", donde seg es el número de segundos desde la época Unix (0:00:00 January 1, 1970 GMT),
+        // y msec es el número de microsegundos que han transcurrido desde sec, expresado en segundos. 
         list($micro_seg, $segs) = explode(" ", $instante_actual);
         var_dump($micro_seg);
         var_dump($segs);
