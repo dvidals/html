@@ -32,18 +32,37 @@
         E para chamar ao método non necesitaríamos crear un obxecto da clase:
         echo Data::getData();
         */
-        setlocale(LC_ALL,'es_ES');
-        date_default_timezone_set('Europe/Madrid');
-
-        setlocale(LC_TIME, 'es_ES.UTF-8');
-        setlocale(LC_TIME, 'spanish');
         class Data {
             private static $calendario = "Calendario gregoriano";
             public static function getData(){
                 $ano = date('Y');
-                $mes = date('F');
+                $mes = date('m');
                 $dia = date('d');
                 $diasemana=date('w');
+               switch($diasemana){
+                    case 1:$diasemana="Luns";break;
+                    case 2:$diasemana="Martes";break;
+                    case 3:$diasemana="Mércores";break;
+                    case 4:$diasemana="Xoves";break;
+                    case 5:$diasemana="Venres";break;
+                    case 6:$diasemana="Sábado";break;
+                    case 7:$diasemana="Domingo";break;   
+                }
+                
+                switch($mes){
+                    case 1:$mes="Xaneiro";break;
+                    case 2:$mes="Febreiro";break;
+                    case 3:$mes="Marzo";break;
+                    case 4:$mes="Abril";break;
+                    case 5:$mes="Maio";break;
+                    case 6:$mes="Xuño";break;
+                    case 7:$mes="Xulio";break;   
+                    case 8:$mes="Agosto";break;   
+                    case 9:$mes="Setembro";break;   
+                    case 10:$mes="Outubro";break;   
+                    case 11:$mes="Novembro";break;   
+                    case 12:$mes="Decembro";break;   
+                }
                 return $diasemana. ' '.$dia.' de ' . $mes . ' do ' . $ano;
                 
                 
@@ -51,7 +70,7 @@
 
             
             public  function getCalendario(){
-                return $this->calendario;
+                return self::$calendario;
 
             }
             public static function getHora(){
@@ -68,4 +87,5 @@
            } 
            
            $data=new Data();
+           Echo 'Usamos o calendario: '.Data::getCalendario().'<br/>';
            Echo 'Hoxe é '.$data->getDataHora();
