@@ -82,19 +82,20 @@ final class Alumno extends Persoa{
 
 
 final class Profesor extends Persoa {
-    use Baile;
     protected $NIF;
     static $numHoras=0;
     static $importeHora=16;
+    protected $bailes;
     
 
     function __get($atributo){
       return $this->$atributo;
     }
     
-    public function __construct($nome, $apelidos, $telefono,$NIF){
+    public function __construct($nome, $apelidos, $telefono,$NIF,$baile=NULL){
         parent::__construct($nome, $apelidos,$telefono);
         $this->NIF = $NIF;
+        $this->baile=$baile;
       }
       
    
@@ -104,37 +105,58 @@ final class Profesor extends Persoa {
           
       }
       
+      function engadirBaile(Baile $baile){
+        $this->baile[] = $baile;
+
+      }
+
+      function eliminarBaile($baile){
+        unset($baile);
+
+      }
+
+      function devolverBailes(){
+
+      }
+
+      public function __toString()
+    {
+        return $this->foo;
+    }
     
     
 }
     
- trait Baile {
+ class Baile {
      
      protected $nomeBaile;
-     static $idadeMínima=8;
+     protected $idadeMínima;
      
      function __get($atributo){
       return $this->$atributo;
     }
     
     
-      public function __construct($nome, $idadeMínima){
-        $this->nome=$nome;
+      public function __construct($nomeBaile, $idadeMínima=8){
+        $this->nomeBaile=$nomeBaile;
         $this->idadeMínima = $idadeMínima;
       }
      
        public function verInformación(){
         echo "$this->nombeBaile ($this->idadeMínima)";
+
     }
+
+    
       
      
  }
 
 $p1=new Persoa("David", "Vidal de Sa", 654785777);
-$p2=new Profesor("Alejandro", "Vidal", 902902902,"36128619N");
+
 $p3=new Alumno("David", "Vidal", 654785777,Null,Null);
 $p1->verInformación();echo"<br/>";
-$p2->verInformación();echo"<br/>";
+//$p2->verInformación();echo"<br/>";
 $p3->verInformación();echo"<br/>";
 var_dump($p3);
 $p3->setNumClases(1);echo"<br/>";
@@ -142,7 +164,30 @@ var_dump($p3);
 echo $p3->numClases;echo"<br/>";
 $p3->aPagar();echo"<br/>";
 echo $p3->cuota;echo"<br/>";
-echo $p2->NIF;echo"<br/>";
-var_dump($p2);echo"<br/>";
-echo $p2->calculaSoldo(5);echo"<br/>";
+//echo $p2->NIF;echo"<br/>";
+
+//echo $p2->calculaSoldo(5);echo"<br/>";
 echo Profesor::$importeHora;
+$b1=new Baile("HIP HOP");
+$b2= new Baile("AFRO");
+$b3= new Baile ("SAMBA");
+var_dump($b1);
+$p2=new Profesor("Alejandro", "Vidal", 902902902,"36128619N",array($b1,$b3));
+var_dump($p2);echo"<br/>";
+
+$p2->engadirBaile($b2);
+var_dump($p2);echo"<br/>";
+$p2->engadirBaile($b1);
+var_dump($p2);echo"<br/>";
+
+/*
+$pedro = new Persona("Pedro", Null);
+print_r($pedro);
+$pablo = new Persona("Pablo", array($pedro));
+$gabriel = new Persona("Gabriel", array($pedro));
+$pedro->amigos = array($pablo,$gabriel);
+var_dump($pedro);
+//print("<pre>".print_r($pedro,true)."</pre>");
+$pablo->nombre ="pablito";
+var_dump($pedro);
+*/

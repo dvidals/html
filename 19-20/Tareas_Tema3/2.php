@@ -42,7 +42,7 @@ class Persoa
     private $sexo;
     public $df;
 
-    public function __construct($nome, DateTime $nacemento, $sexo)
+    public function __construct($nome, DateTime $nacemento, $sexo='H')
     {
         $this->nome = $nome;
         $this->nacemento = $nacemento;
@@ -171,7 +171,7 @@ echo $str;
 
 $date1 = DateTime::createFromFormat('Y-m-d',"1990-04-02");
 
-$persoa1 = new Persoa('Pedro', $date1, 'M');
+$persoa1 = new Persoa('Pedro', $date1);
 var_dump($persoa1);
 
 echo $persoa1->nome . " ";
