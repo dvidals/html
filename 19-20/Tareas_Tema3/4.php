@@ -52,16 +52,18 @@ final class Alumno extends Persoa{
 
     protected $numClases=NULL;
     protected $cuota=NULL;
+    protected $academia;
     
     
     function __get($atributo){
       return $this->$atributo;
     }
 
-    public function __construct($nome, $apelidos, $telefono, $numClases,$cuota){
+    public function __construct($nome, $apelidos, $telefono, $numClases,$cuota,$academia=NULL){
         parent::__construct($nome, $apelidos,$telefono); 
         $this->numClases=$numClases;
         $this->cuota=$cuota;
+        $this->academia=$academia;
       }
 
     //setNumClases e aPagar
@@ -95,10 +97,11 @@ final class Profesor extends Persoa {
       return $this->$atributo;
     }
     
-    public function __construct($nome, $apelidos, $telefono,$NIF,$bailes=NULL){
+    public function __construct($nome, $apelidos, $telefono,$NIF,$bailes=NULL,$academia=NULL){
         parent::__construct($nome, $apelidos,$telefono);
         $this->NIF = $NIF;
         $this->bailes=$bailes;
+        $this->academia=$academia;
       }
       
    
@@ -244,8 +247,8 @@ var_dump($p2);echo"<br/>";
 $p2->eliminarBaile($b2);
 var_dump($p2);echo"<br/>";
 $p2->devolverBailes();echo"<br/>";
-$a->mostrarConstante();
-
+$a->mostrarConstante();echo"<br/>";
+var_dump($a);
 /*
 $pedro = new Persona("Pedro", Null);
 print_r($pedro);
