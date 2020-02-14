@@ -14,21 +14,22 @@ A clase Alumno ten dous métodos: setNumClases e aPagar, e debe empregar o méto
      Por tres ou máis: 40 euros.
      No caso de que non estea establecido  o número de clases  ás que asiste para ese alumno devolverá 'Debe indicar previamente o número de clases'.
 A clase Profesor ten un método calcularSoldo que calcula o que cobran os profesoresdependendo   do   número   de   clases   que   imparten   ao   mes.  
-     Recibe   como   parámetros   onúmero de horas e o importe de cada hora, que está establecido en 16 euros pero podería variar.
+     Recibe   como   parámetros   o número de horas e o importe de cada hora, que está establecido en 16 euros pero podería variar.
 A clase  Baile con dous atributos:  nome e  idadeMínima. A idade mínima será de 8 anos salvo que se indique o contrario.O profesor terá 3 métodos para engadir
     os Bailes que imparte, eliminar un baile cando deixe de impartilo e para devolver os bailes que imparte da forma: HIP HOP (idade min: 8 anos) 
     Antes de engadir un baile debe comprobar se xa está dado de alta para ese profesor.
-A clase  Academia:   almacenará   o   seu   nome   nunha   constante   e   debe   permitir   engadirProfesores e Alumnos.Para probalo debes facer o seguinte:
+A clase  Academia:   almacenará   o   seu   nome   nunha   constante   e   debe   permitir   engadir Profesores e Alumnos.Para probalo debes facer o seguinte:
     –Engade á academia  un profesor que imparte 4 bailes  (entre eles  AFRO, e un deles duplicado) e 2 alumnos.
-    –Mostra información do profesores (incluíndo o soldo e os bailes que imparte) e dosalumnos incluíndo a cota que deberá pagar.
+    –Mostra información do profesores (incluíndo o soldo e os bailes que imparte) e dos alumnos incluíndo a cota que deberá pagar.
     –O profesor deixa de dar clase de AFRO. Actualiza a información da academia e volvea mostrar a información do profesor.
 Impide a herdanza das clases Alumno e Profesor.
 */
-
+class BaileException extends Exception{};
 class Persoa{
     protected $nome;
     protected $apelidos;
     protected $telefono;
+    protected $academia;
     
     function __get($atributo){
       return $this->$atributo;
@@ -86,16 +87,18 @@ final class Profesor extends Persoa {
     static $numHoras=0;
     static $importeHora=16;
     protected $bailes;
+    protected $academia;
+    
     
 
     function __get($atributo){
       return $this->$atributo;
     }
     
-    public function __construct($nome, $apelidos, $telefono,$NIF,$baile=NULL){
+    public function __construct($nome, $apelidos, $telefono,$NIF,$bailes=NULL){
         parent::__construct($nome, $apelidos,$telefono);
         $this->NIF = $NIF;
-        $this->baile=$baile;
+        $this->bailes=$bailes;
       }
       
    
@@ -106,16 +109,26 @@ final class Profesor extends Persoa {
       }
       
       function engadirBaile(Baile $baile){
-        $this->baile[] = $baile;
+        if (in_array($baile,$this->bailes)) throw new BaileException;
+        else $this->bailes[] = $baile;
 
       }
 
       function eliminarBaile($baile){
-        unset($baile);
 
+        foreach ($this->bailes as $clave => $valor) {
+          if($valor==$baile) unset($this->bailes[$clave]);
+          
+      }
+         
       }
 
       function devolverBailes(){
+
+        foreach ($this->bailes as  $baile) {
+          echo $baile->nomeBaile." (idade mínima:" .$baile->idadeMínima.")<br/>";
+          
+      }
 
       }
 
@@ -143,14 +156,46 @@ final class Profesor extends Persoa {
       }
      
        public function verInformación(){
-        echo "$this->nombeBaile ($this->idadeMínima)";
+        echo "$this->nomeBaile ($this->idadeMínima)";
 
     }
 
-    
+    public function __toString()
+    {
+        return $this->nomeBaile;
+        return ($this->idadeMínima);
+    }
       
      
  }
+
+ /*
+ A clase  Academia:   almacenará   o   seu   nome   nunha   constante   e   debe   permitir   engadir Profesores e Alumnos.Para probalo debes facer o seguinte:
+    –Engade á academia  un profesor que imparte 4 bailes  (entre eles  AFRO, e un deles duplicado) e 2 alumnos.
+    –Mostra información do profesores (incluíndo o soldo e os bailes que imparte) e dos alumnos incluíndo a cota que deberá pagar.
+    –O profesor deixa de dar clase de AFRO. Actualiza a información da academia e volvea mostrar a información do profesor.
+Impide a herdanza das clases Alumno e Profesor.
+*/
+
+class Academia{
+
+  const NOME="DANZA KUDURO";
+  function mostrarConstante() {
+    echo  self::NOME . "\n";
+  }
+
+  function engadirProfesores(){
+
+  }
+
+  function engadirAlumnos(){
+
+  }
+
+}
+
+
+
 
 $p1=new Persoa("David", "Vidal de Sa", 654785777);
 
@@ -172,13 +217,34 @@ $b1=new Baile("HIP HOP");
 $b2= new Baile("AFRO");
 $b3= new Baile ("SAMBA");
 var_dump($b1);
-$p2=new Profesor("Alejandro", "Vidal", 902902902,"36128619N",array($b1,$b3));
+$a=new Academia();
+
+
+$p2=new Profesor("Alejandro", "Vidal", 902902902,"36128619N",array($b1,$b3),$a);
 var_dump($p2);echo"<br/>";
 
-$p2->engadirBaile($b2);
+try {
+
+  $p2->engadirBaile($b2);
 var_dump($p2);echo"<br/>";
+
+} catch (BaileException $e){
+	
+	echo "Ese baile $b2->nomeBaile ya lo imparte el profesor $p2->nome <br/>";
+}
+
+try{
 $p2->engadirBaile($b1);
 var_dump($p2);echo"<br/>";
+	
+} catch (BaileException $e){
+	
+	echo "Ese baile $b1->nomeBaile ya lo imparte el profesor $p2->nome <br/>";
+}
+$p2->eliminarBaile($b2);
+var_dump($p2);echo"<br/>";
+$p2->devolverBailes();echo"<br/>";
+$a->mostrarConstante();
 
 /*
 $pedro = new Persona("Pedro", Null);
