@@ -181,7 +181,8 @@ Impide a herdanza das clases Alumno e Profesor.
 */
 
 class Academia{
-
+  protected $profesores;
+  protected $alumnos;
   const NOME="DANZA KUDURO";
   function mostrarConstante() {
     echo  self::NOME . "\n";
@@ -221,7 +222,7 @@ $b2= new Baile("AFRO");
 $b3= new Baile ("SAMBA");
 var_dump($b1);
 $a=new Academia();
-
+echo"--------------------------<br/>";echo"<br/>";
 
 $p2=new Profesor("Alejandro", "Vidal", 902902902,"36128619N",array($b1,$b3),$a);
 var_dump($p2);echo"<br/>";
