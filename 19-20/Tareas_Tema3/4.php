@@ -25,6 +25,8 @@ A clase  Academia:   almacenará   o   seu   nome   nunha   constante   e   debe
 Impide a herdanza das clases Alumno e Profesor.
 */
 class BaileException extends Exception{};
+class ProfesorException extends Exception{};
+class AlumnoException extends Exception{};
 class Persoa{
     protected $nome;
     protected $apelidos;
@@ -59,11 +61,11 @@ final class Alumno extends Persoa{
       return $this->$atributo;
     }
 
-    public function __construct($nome, $apelidos, $telefono, $numClases,$cuota,$academia=NULL){
+    public function __construct($nome, $apelidos, $telefono, $numClases/*,$cuota,$academia=NULL*/){
         parent::__construct($nome, $apelidos,$telefono); 
         $this->numClases=$numClases;
-        $this->cuota=$cuota;
-        $this->academia=$academia;
+        //$this->cuota=$cuota;
+        //$this->academia=$academia;
       }
 
     //setNumClases e aPagar
@@ -89,6 +91,8 @@ final class Profesor extends Persoa {
     static $numHoras=0;
     static $importeHora=16;
     protected $bailes;
+    protected $soldo;
+    
     protected $academia;
     
     
@@ -97,17 +101,18 @@ final class Profesor extends Persoa {
       return $this->$atributo;
     }
     
-    public function __construct($nome, $apelidos, $telefono,$NIF,$bailes=NULL,$academia=NULL){
+    public function __construct($nome, $apelidos, $telefono,$NIF,$bailes=NULL/*,$soldo=0,$academia=NULL*/){
         parent::__construct($nome, $apelidos,$telefono);
         $this->NIF = $NIF;
         $this->bailes=$bailes;
-        $this->academia=$academia;
+       //$this->soldo=$soldo;
+        //$this->academia=$academia;
       }
       
    
       function calculaSoldo($numHoras){
           self::$numHoras=$numHoras;
-        return  $numHoras * self::$importeHora;
+        return  $soldo=$numHoras * self::$importeHora;
           
       }
       
@@ -117,7 +122,7 @@ final class Profesor extends Persoa {
 
       }
 
-      function eliminarBaile($baile){
+      function eliminarBaile(Baile $baile){
 
         foreach ($this->bailes as $clave => $valor) {
           if($valor==$baile) unset($this->bailes[$clave]);
@@ -135,10 +140,7 @@ final class Profesor extends Persoa {
 
       }
 
-      public function __toString()
-    {
-        return $this->foo;
-    }
+      
     
     
 }
@@ -181,20 +183,30 @@ Impide a herdanza das clases Alumno e Profesor.
 */
 
 class Academia{
-  protected $profesores;
-  protected $alumnos;
+  protected  $profesores= array();
+  protected  $alumnos = array();
   const NOME="DANZA KUDURO";
   function mostrarConstante() {
     echo  self::NOME . "\n";
   }
 
-  function engadirProfesores(){
-   
-  }
-
-  function engadirAlumnos(){
+  function engadirProfesores(Profesor $profesor){
+    if (in_array($profesor,$this->profesores)) throw new ProfesorException;
+    else $this->profesores[] = $profesor;
 
   }
+  
+
+  function engadirAlumnos(Alumno $alumno){
+    if (in_array($alumno,$this->alumnos)) throw new AlumnoException;
+    else $this->alumnos[] = $alumno;
+  }
+
+  public function __toString()
+    {
+      
+        return implode("<br/>", $this->profesores). implode("<br/>", $this->alumnos);
+    }
 
 }
 
@@ -203,7 +215,8 @@ class Academia{
 
 $p1=new Persoa("David", "Vidal de Sa", 654785777);
 
-$p3=new Alumno("David", "Vidal", 654785777,Null,Null);
+$p3=new Alumno("David", "Vidal", 654785777,Null);
+$alum2= new Alumno("Juan", "García", 654785999,4);
 $p1->verInformación();echo"<br/>";
 //$p2->verInformación();echo"<br/>";
 $p3->verInformación();echo"<br/>";
@@ -224,7 +237,7 @@ var_dump($b1);
 $a=new Academia();
 echo"--------------------------<br/>";echo"<br/>";
 
-$p2=new Profesor("Alejandro", "Vidal", 902902902,"36128619N",array($b1,$b3),$a);
+$p2=new Profesor("Alejandro", "Vidal", 902902902,"36128619N",array($b1,$b3));
 var_dump($p2);echo"<br/>";
 
 try {
@@ -249,7 +262,20 @@ $p2->eliminarBaile($b2);
 var_dump($p2);echo"<br/>";
 $p2->devolverBailes();echo"<br/>";
 $a->mostrarConstante();echo"<br/>";
+
+echo Academia::NOME;
 var_dump($a);
+
+$a->engadirProfesores($p2);
+$a->engadirAlumnos($p3);
+$a->engadirAlumnos($alum2);
+var_dump($a);
+$p4=new Profesor("Pablo", "Vidal", 902902903,"36128618S",array($b1,$b3,$b2,$b3));
+var_dump($p4);
+$a->engadirProfesores($p4);
+var_dump($a);
+
+$a->__toString();
 /*
 $pedro = new Persona("Pedro", Null);
 print_r($pedro);
