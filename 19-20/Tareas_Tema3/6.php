@@ -136,7 +136,7 @@ final class Profesor extends Persoa implements Comparar{
           if($profesor instanceof Profesor){        
               if($this->idade>$profesor->idade) echo "$this->nome es más viejo que $profesor->nome";
               elseif($this->idade==$profesor->idade)echo "$this->nome tiene la misma edad que $profesor->nome";
-                else($this->idade<$profesor->idade) echo "$this->nome tiene la misma edad que $profesor->nome";
+                else echo "$this->nome tiene la misma edad que $profesor->nome";
           }
     
           else throw new CompararException;
