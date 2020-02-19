@@ -1,33 +1,26 @@
 <?php
+
 /*
-1.3.4 Tarefa 4. Implementación da herdanza en PHP
-a)Tarefa 4_a
-Queremos xestionar unha academia de baile. Para elo, temos que gardar información tanto dos alumnos como dos profesores que imparten clases na academia. 
-De ambos queremos saber o seu nome, apelidos, móbil. Dos profesores ademais queremos almacenar o NIF para o cal chamarán ao método construtor de Persoa 
-ademais de almacenar o NIF.
-Temos que declarar as seguintes clases:
-A clase  Persoa  debe ter un método verInformación que devolve para a información coseguinte formato: Uxia Loureiro Agra (699444999) 
-A clase Alumno ten dous métodos: setNumClases e aPagar, e debe empregar o métodoconstrutor de Persoa.
-  –O método aPagar devolverá o importe e pagan en función do número de actividades nas que se inscriben:
-     Por unha actividade: 20 euros
-     Por dúas actividades:32 euros
-     Por tres ou máis: 40 euros.
-     No caso de que non estea establecido  o número de clases  ás que asiste para ese alumno devolverá 'Debe indicar previamente o número de clases'.
-A clase Profesor ten un método calcularSoldo que calcula o que cobran os profesoresdependendo   do   número   de   clases   que   imparten   ao   mes.  
-     Recibe   como   parámetros   o número de horas e o importe de cada hora, que está establecido en 16 euros pero podería variar.
-A clase  Baile con dous atributos:  nome e  idadeMínima. A idade mínima será de 8 anos salvo que se indique o contrario.O profesor terá 3 métodos para engadir
-    os Bailes que imparte, eliminar un baile cando deixe de impartilo e para devolver os bailes que imparte da forma: HIP HOP (idade min: 8 anos) 
-    Antes de engadir un baile debe comprobar se xa está dado de alta para ese profesor.
-A clase  Academia:   almacenará   o   seu   nome   nunha   constante   e   debe   permitir   engadir Profesores e Alumnos.Para probalo debes facer o seguinte:
-    –Engade á academia  un profesor que imparte 4 bailes  (entre eles  AFRO, e un deles duplicado) e 2 alumnos.
-    –Mostra información do profesores (incluíndo o soldo e os bailes que imparte) e dos alumnos incluíndo a cota que deberá pagar.
-    –O profesor deixa de dar clase de AFRO. Actualiza a información da academia e volvea mostrar a información do profesor.
-Impide a herdanza das clases Alumno e Profesor.
+1.3.6Tarefa 6. Definición de clases capturando excepcións
+Modifica a tarefa 4 segundo as seguintes indicacións:
+    Crea unha interface Comparar cun método de nome comparar cun parámetro.
+    Dos profesores queremos coñecer tamén a súa idade para poder comparalos en funciónda súa idade.
+     –Cando se visualiza un profesor tamén queremos ver información da idade.
+     –O método comparar comprobará que o obxecto recibido é de tipo Profesor, en caso contrario lanzará unha excepción indicándoo.
+     Fai un exemplo onde se compare dous profesores en función da súa idade utilizando o método comparar.
+
 */
+
+interface Comparar {
+    public function comparar($parametro);
+        
+    
+}
 
 class BaileException extends Exception{};
 class ProfesorException extends Exception{};
 class AlumnoException extends Exception{};
+class CompararException extends Exception{};
 class Persoa{
     protected $nome;
     protected $apelidos;
@@ -87,17 +80,15 @@ final class Alumno extends Persoa{
 }
 
 
-final class Profesor extends Persoa {
+final class Profesor extends Persoa implements Comparar{
     protected $NIF;
     static $numHoras=0;
     static $importeHora=16;
     protected $bailes;
     protected $soldo;
-    
+    //nuevo:
+    protected $idade;
     protected $academia;
-    
-    
-
     function __get($atributo){
       return $this->$atributo;
     }
@@ -141,7 +132,23 @@ final class Profesor extends Persoa {
 
       }
 
-      
+      function comparar(Profesor $profesor){
+          if($profesor instanceof Profesor){        
+              if($this->idade>$profesor->idade) echo "$this->nome es más viejo que $profesor->nome";
+              elseif($this->idade==$profesor->idade)echo "$this->nome tiene la misma edad que $profesor->nome";
+                else($this->idade<$profesor->idade) echo "$this->nome tiene la misma edad que $profesor->nome";
+          }
+    
+          else throw new CompararException;
+
+
+      }
+
+      public function __toString()
+    {
+        return $this->nome;
+        return ($this->idade);
+    }
     
     
 }
@@ -196,6 +203,8 @@ class Academia{
     else $this->profesores[] = $profesor;
 
   }
+
+
   
 
   function engadirAlumnos(Alumno $alumno){
@@ -277,6 +286,7 @@ $a->engadirProfesores($p4);
 var_dump($a);
 
 //$a->__toString();
+
 echo $a;
 /*
 $pedro = new Persona("Pedro", Null);
