@@ -77,6 +77,12 @@ final class Alumno extends Persoa{
         else echo 'Debe indicar previamente o número de clases';
     }
 
+    public function __toString()
+    {
+        return $this->nome;
+      
+    }
+
 }
 
 
@@ -93,10 +99,11 @@ final class Profesor extends Persoa implements Comparar{
       return $this->$atributo;
     }
     
-    public function __construct($nome, $apelidos, $telefono,$NIF,$bailes=NULL/*,$soldo=0,$academia=NULL*/){
+    public function __construct($nome, $apelidos, $telefono,$NIF,$bailes=NULL/*,$soldo=0,$academia=NULL*/,$idade=NULL){
         parent::__construct($nome, $apelidos,$telefono);
         $this->NIF = $NIF;
         $this->bailes=$bailes;
+        $this->idade=$idade;
        //$this->soldo=$soldo;
         //$this->academia=$academia;
       }
@@ -132,11 +139,11 @@ final class Profesor extends Persoa implements Comparar{
 
       }
 
-      function comparar(Profesor $profesor){
+      function comparar($profesor){
           if($profesor instanceof Profesor){        
-              if($this->idade>$profesor->idade) echo "$this->nome es más viejo que $profesor->nome";
-              elseif($this->idade==$profesor->idade)echo "$this->nome tiene la misma edad que $profesor->nome";
-                else echo "$this->nome tiene la misma edad que $profesor->nome";
+              if($this->idade>$profesor->idade) echo "$this->nome es más viejo que $profesor->nome <br/>";
+              elseif($this->idade==$profesor->idade)echo "$this->nome tiene la misma edad que $profesor->nome <br/>";
+                else echo "$this->nome es más joven que $profesor->nome <br/>";
           }
     
           else throw new CompararException;
@@ -146,10 +153,19 @@ final class Profesor extends Persoa implements Comparar{
 
       public function __toString()
     {
-        return $this->nome;
-        return ($this->idade);
+        return  "$this->nome ($this->idade).<br/>";
     }
     
+    function __set($atributo, $valor) {
+      if (property_exists(__CLASS__, $atributo)) {
+        
+        $this->$atributo = $valor;
+
+      }
+       else echo "El atributo no pertenece a la clase ". __CLASS__;
+    }
+
+
     
 }
     
@@ -215,7 +231,7 @@ class Academia{
   public function __toString()
     {
       
-        return implode("<br/>", $this->profesores). implode("<br/>", $this->alumnos);
+        return implode("<br/>", $this->profesores). implode("<br/>", $this->alumnos)."<br/>";
     }
 
 }
@@ -287,7 +303,24 @@ var_dump($a);
 
 //$a->__toString();
 
+
+
+try{
+  $p2-> idade =39;
+  $profe2=new Profesor("Pedro", "Apostol", 902902902,"36128888J",array($b2,$b3));
+$profe2->idade=39;
+$profe2->comparar($p2);
+$profe2->comparar($p3);//$p3 es un alumno no un profesor
+echo $profe2;
+echo $p2;
+$p4-> idade=42;
+
+}catch (CompararException $e){
+  echo "El objeto no pertenece a la clase Profesor </br>";
+}
+
 echo $a;
+echo $profe2;
 /*
 $pedro = new Persona("Pedro", Null);
 print_r($pedro);
