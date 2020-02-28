@@ -36,20 +36,19 @@ método   de   nome  amosarArticulo  que   da   información   dos   valores   d
       
   
       function __set($atributo, $valor) {
-        if (property_exists(__CLASS__, $atributo)) {
+  
           $this->$atributo = $valor;
   
-        }
-         else echo "La propiedad no existe";
       }
 
       public function __clone(){
         $this->nome = $this->nome . ' (cloned)';
         $this->id=++$this->id;
+        //++$this->id; valdría así
       }
 
       public function amosarArticulo(){
-          echo "$this->id - $this->nome";
+          return "$this->id - $this->nome";
 
 
       }
@@ -64,7 +63,12 @@ método   de   nome  amosarArticulo  que   da   información   dos   valores   d
   $articulo4= new Articulo(4,"mechero");
 
   $articulo5= clone $articulo4;
+  $articulo2->precio=2.33;
 
  //$articulo5->características;
- $articulo5->amosarArticulo();
+ echo $articulo2->amosarArticulo()."<br/>";
+ echo $articulo4->amosarArticulo()."<br/>";
+ echo $articulo5->amosarArticulo()."<br/>";
+ echo $articulo1->precio??' precio no asignado'."<br/>";
+ echo $articulo2->precio??' precio no asignado'."<br/>";
   

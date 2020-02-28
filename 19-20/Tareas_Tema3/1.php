@@ -32,9 +32,16 @@
         E para chamar ao método non necesitaríamos crear un obxecto da clase:
         echo Data::getData();
         */
+
+        //private onst dias=array("Domingo","Luns","Martes","Mércores","Xoves","Venres","Sábado");
+        //private const meses = array ("Xaneiro,...);
+        // setlocale(LC Time, 'es_ES.UTF-8');
+        // return (strftime("%A %e de %B do %Y"));
         class Data {
             private static $calendario = "Calendario gregoriano";
             public static function getData(){
+
+                //return self::dias[date('W')]." ". date('d'). " de ". self::meses[date('n')-1]. "do".date('Y');
                 $ano = date('Y');
                 $mes = date('m');
                 $dia = date('d');
@@ -64,7 +71,8 @@
                     case 12:$mes="Decembro";break;   
                 }
                 return $diasemana. ' '.$dia.' de ' . $mes . ' do ' . $ano;
-                
+                // setlocale(LC Time, 'es_ES.UTF-8');
+                // return (strftime("%A %e de %B do %Y"));
                 
                } 
 
@@ -78,6 +86,8 @@
                 $minuto=date('i');
                 $segundos=date('s');
                 return $hora.':'.$minuto.':'.$segundos;
+                // return strftime("%H:%M:%S");
+                // return date('H:i:s');
 
             }
             public function getDataHora(){

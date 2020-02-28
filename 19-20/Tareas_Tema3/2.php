@@ -66,7 +66,7 @@ class Persoa
 
     public function verInformación()
     {
-        echo "$this->nome  ten " . $this->diasVivo() . "<br/> O seu sexo é: $this->sexo"; //da igual que se ponga $nacemento en este punto
+        return $this->nome  ." ten " . $this->diasVivo() . "<br/> $this->sexo"; //da igual que se ponga $nacemento en este punto
     }
 
     public function diasVivo()
@@ -97,7 +97,7 @@ class Persoa
         $str .= ($df->invert == 1) ? ' - ' : '';
         if ($df->y > 0) {
             // anos
-            $str .= ($df->y > 1) ? $df->y . '  anos ' : $df->y . ' año ';
+            $str .= ($df->y > 1) ? $df->y . '  anos ' : $df->y . ' ano ';
         }if ($df->m > 0) {
             // meses
             $str .= ($df->m > 1) ? $df->m . ' meses ' : $df->m . ' mes ';
@@ -183,6 +183,6 @@ echo $persoa1->sexo;
 echo "<br/>";
 echo "<br/>";
 echo "<br/>";
-$persoa1->verInformación();
+echo $persoa1->verInformación();
 
 //var_dump($date1);
