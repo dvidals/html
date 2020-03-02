@@ -66,7 +66,7 @@ class Persoa
 
     public function verInformación()
     {
-        return $this->nome  ." ten " . $this->diasVivo() . "<br/> $this->sexo"; //da igual que se ponga $nacemento en este punto
+        return "---" . $this->nome  ." ten " . $this->diasVivo() . "<br/> $this->sexo"; //da igual que se ponga $nacemento en este punto
     }
 
     public function diasVivo()
@@ -182,7 +182,7 @@ echo $persoa1->sexo;
 //$diff = $date1->diff($date2);
 echo "<br/>";
 echo "<br/>";
-echo "<br/>";
+echo "<br/> --------*******************";
 echo $persoa1->verInformación();
 
 //var_dump($date1);
