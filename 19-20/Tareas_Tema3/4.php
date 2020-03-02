@@ -24,7 +24,10 @@ A clase  Academia:   almacenará   o   seu   nome   nunha   constante   e   debe
     –O profesor deixa de dar clase de AFRO. Actualiza a información da academia e volvea mostrar a información do profesor.
 Impide a herdanza das clases Alumno e Profesor.
 */
+spl_autoload_register(function($nombre_clase){
+  include_once $nombre_clase.'.php';
 
+});
 class BaileException extends Exception{};
 class ProfesorException extends Exception{};
 class AlumnoException extends Exception{};
@@ -48,6 +51,11 @@ class Persoa{
     public function verInformación(){
         echo "$this->nome  $this->apelidos ($this->telefono)";
     }
+
+    public function __toString(){
+      echo "$this->nome  $this->apelidos ($this->telefono)";
+  }
+
 }
 final class Alumno extends Persoa{
     
@@ -82,6 +90,10 @@ final class Alumno extends Persoa{
         elseif($this->numClases==2)$this->cuota=32;
         elseif($this->numClases==1)$this->cuota=20;
         else echo 'Debe indicar previamente o número de clases';
+    }
+
+    public function __toString(){
+      return 'Alumno: '.parent::__toString().'.Cuota: ';
     }
 
 }
@@ -152,7 +164,10 @@ final class Profesor extends Persoa {
      protected $idadeMínima;
      
      function __get($atributo){
+       if (property_exists(__CLASS__,$atributo)){
       return $this->$atributo;
+       }
+       return NULL;
     }
     
     
@@ -184,21 +199,21 @@ Impide a herdanza das clases Alumno e Profesor.
 */
 
 class Academia{
-  protected  $profesores= array();
-  protected  $alumnos = array();
+  protected static $profesores= array(); //No tiene porque haber academia para que haya profesores
+  protected static $alumnos = array();  //No tiene porque haber academis para que haya alumnos, sólo hay una.
   const NOME="DANZA KUDURO";
   function mostrarConstante() {
     echo  self::NOME . "\n";
   }
 
-  function engadirProfesores(Profesor $profesor){
+  public  function engadirProfesores(Profesor $profesor){
     if (in_array($profesor,$this->profesores)) throw new ProfesorException;
     else $this->profesores[] = $profesor;
 
   }
   
 
-  function engadirAlumnos(Alumno $alumno){
+  public  function engadirAlumnos(Alumno $alumno){
     if (in_array($alumno,$this->alumnos)) throw new AlumnoException;
     else $this->alumnos[] = $alumno;
   }
