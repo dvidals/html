@@ -1,6 +1,8 @@
 <?php
 
-define('DIR_DESTINO','subidos');
+define('DIR_DESTINO','./subidos');
+
+var_dump($_FILES);
 
 $tam = $_FILES["fichero"]["size"];
 if ($tam > 256 * 1024) {
