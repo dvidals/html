@@ -1,0 +1,25 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Formulario Módulos</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body>
+        <h3>Introduzca sus datos</h3>
+        <form method="post" action="procesa.php">
+Nombre: <br/>
+<input type="text" name="nombre"><br/>
+Apellidos:<br/>
+<input type="text" name="apellidos"><br/>
+Módulos</br>
+<input type="checkbox" name="modulos[]" value="DWEC">Desarrollo web en entorno cliente<br/>
+<input type="checkbox" name="modulos[]" value="DWES">Desarrollo web en entorno servidor<br/>
+ <input  type="submit" name="enviar" value="enviar">      
+        </form>      
+        
+    </body>
+</html>
