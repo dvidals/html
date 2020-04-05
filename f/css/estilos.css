@@ -1,0 +1,31 @@
+
+.logo{
+  width:25px;
+  height:25px;
+  float:left;
+}
+.caixa{
+  height: 200px;
+  border: 1px solid #000;
+  background-color: powderblue;
+  margin-bottom: 5px;
+}
+.bolita{
+  background:#f00;
+  position: relative;
+  top:0px;
+  left:0px;
+  height:20px;
+  width: 20px;
+  -webkit-border-radius: 10px 10px; /*Safari*/
+     -moz-border-radius: 10px 10px; /*Firefox*/
+      -ms-border-radius: 10px 10px; /*I.E*/
+       -o-border-radius: 10px 10px; /*Opera*/
+          border-radius: 10px 10px; /*Los demás*/
+}
+#volver{
+  margin-top: 40px;
+}
+.error{
+  border:solid 1px red;
+}
