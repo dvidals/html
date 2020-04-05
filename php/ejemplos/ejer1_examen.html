@@ -1,0 +1,33 @@
+<!--
+1.  (4 puntos) Escribe un formulario que nos solicite la base y la altura de un triángulo o los dos lados de un
+rectángulo y nos devuelva el área de este, especificando de qué figura geométrica se trata.
+El programa nos debe permitir escoger la figura geométrica por medio de un desplegable.
+-->
+<!doctype html>
+<html lang="es">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Cálculo de Áreas</title>
+</head>
+
+<body>
+
+<h2>ÁREA DE UN UNA FORMA GEOMÉTRICA</h2>
+
+<form method="post" action="ejer1_examen.php">
+    	<br>BASE: <br>
+    	<input type="text" name="base" size="4" />
+        <br><br> ALTURA: <br>
+    	<input type="text" name="altura" size="4" />
+        
+<br><br/>FORMA:<br/>
+<select name="forma">
+	<option value="triangulo">Triángulo</option>
+	<option value="rectangulo" >Rectángulo</option>
+       </select><br/><br/>  
+    	<p><input type="submit" name="submit" value="Enviar" />
+</form>
+
+
+</body>
+</html>

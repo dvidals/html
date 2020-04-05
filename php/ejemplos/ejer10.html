@@ -1,0 +1,36 @@
+<!--
+Crear un formulario de petición de ingreso en un club de deportes, en el que se nos pida
+el nombre, dirección, edad, profesión y se indique si somos o no residentes en la zona
+(para este último dato se usarán dos botones del tipo radio button)
+Validar la información y sacar un mensaje por cada campo equivocado o en blanco. Si
+todos los campos son correctos, se mostrará la información final en pantalla.
+-->
+<!doctype html>
+<html lang="es">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Formulario</title>
+</head>
+
+<body>
+
+<h2>Formulario de Ingreso</h2>
+
+<form method="post" action="ejer10.php">
+    	NOMBRE: <br>
+    	<input type="text" name="nombre" size="40" />
+        <br> DIRECCIÓN: <br>
+         <textarea name="direccion" rows="5" cols="40"></textarea>
+        <br>EDAD: <br>
+    	<input type="text" name="edad" size="3" />
+        <br>PROFESIÓN: <br>
+    	<input type="text" name="ocupacion" size="30" />
+        <br>RESIDENTE EN LA ZONA: <br>
+<input type="radio" name="residente" value="true" checked> Si<br>
+<input type="radio" name="residente" value="false"> No<br>
+    	<p><input type="submit" name="submit" value="Enviar" />
+</form>
+
+
+</body>
+</html>
