@@ -46,4 +46,4 @@
    
      echo "<br/>";
     
-     echo $usuario->salario;
+     //echo $usuario->salario;
