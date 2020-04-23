@@ -32,14 +32,18 @@
         echo "clave: $k, valor: $v" . "<br>";
     }
     
+    echo "<br/>";
+
      foreach ($usuario as $k=> $v) {
         echo "clave:$k, valor: ".$usuario->$k."<br>";
     }
     
+    echo "<br/>";
+
     foreach ($usuario as $k=> $v) {
         echo "clave:$k, valor: ".$usuario->__get($k)."<br>";
     }
    
-    
+     echo "<br/>";
     
      echo $usuario->salario;
