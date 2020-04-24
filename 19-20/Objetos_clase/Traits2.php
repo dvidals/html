@@ -37,4 +37,6 @@
     echo $c->metodoA() . "<br>"; // 1
     $c::$contador++;
     $c::$contador++;
-    echo $c->metodoB(); // 3
+    echo $c->metodoB()."<br/>"; // 3
+    echo "----:";
+    echo $c->metodoA(); // 3
