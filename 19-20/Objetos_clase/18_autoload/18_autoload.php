@@ -11,4 +11,5 @@ spl_autoload_register(function ($nombre_clase) {
 // (al estilo de java)
 
 $obj  = new MiClase1();
+echo "<br><br>";
 $obj2 = new MiClase2();
