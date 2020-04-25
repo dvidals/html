@@ -48,10 +48,19 @@ método   de   nome  amosarArticulo  que   da   información   dos   valores   d
       }
 
       public function amosarArticulo(){
-          return "$this->id - $this->nome";
+        return "$this->id - $this->nome";
 
 
+    }
+
+      public function __toString()
+      {
+       return $this->amosarArticulo(); //esto es mío al principio sólo puse amosarArticulo(), me daba fallo porque necesita
+       //el $this para que la reconozca; luego puse todo sin el return y no funcionaba porque tiene que devolver
+       // un string y para eso necesita que haya un return, para que devuelva algo.
       }
+
+      
   
   
     }
@@ -71,4 +80,10 @@ método   de   nome  amosarArticulo  que   da   información   dos   valores   d
  echo $articulo5->amosarArticulo()."<br/>";
  echo $articulo1->precio??' precio no asignado'."<br/>";
  echo $articulo2->precio??' precio no asignado'."<br/>";
+ echo "<br><br>";
+ echo $articulo2."<br/>";
+ echo $articulo4."<br/>";
+ echo $articulo5."<br/>";
+ 
+ 
   

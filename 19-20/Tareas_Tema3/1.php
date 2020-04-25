@@ -18,22 +18,14 @@
         }
      } 
 
-     class Data {
-         public static $calendario = "Calendario gregoriano";
-         public static function getData(){
-             $ano = date('Y');
-             $mes = date('m');
-             $dia = date('d');
-             return $dia . '/' . $mes . '/' . $ano;
-            } 
-        } 
+     
         Co cal para amosar a propiedade deberiamos empregar o nome da clase:
         echo Data::$calendario;
         E para chamar ao método non necesitaríamos crear un obxecto da clase:
         echo Data::getData();
         */
 
-        //private onst dias=array("Domingo","Luns","Martes","Mércores","Xoves","Venres","Sábado");
+        //private const dias=array("Domingo","Luns","Martes","Mércores","Xoves","Venres","Sábado");
         //private const meses = array ("Xaneiro,...);
         // setlocale(LC Time, 'es_ES.UTF-8');
         // return (strftime("%A %e de %B do %Y"));

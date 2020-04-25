@@ -47,16 +47,16 @@ class Persoa
         $this->nome = $nome;
         $this->nacemento = $nacemento;
         $this->sexo = $sexo;
-        var_dump($this);
+        //var_dump($this);
         if ($this->sexo == 'H') {
-            $this->sexo = 'O seu sexo é: home';
+            $this->sexo = 'O seu sexo é: home.';
         } elseif ($this->sexo == 'M') {
-            $this->sexo = 'O seu sexo é: muller';
+            $this->sexo = 'O seu sexo é: muller.';
         } else {
-            $sexo = 'descoñecido';
+            $sexo = 'descoñecido.';
         }
 
-        var_dump($this);
+        //var_dump($this);
     }
 
     public function __get($atributo)
@@ -64,9 +64,15 @@ class Persoa
         return $this->$atributo;
     }
 
-    public function verInformación()
+    public function verInformación1()
     {
-        return "---" . $this->nome  ." ten " . $this->diasVivo() . "<br/> $this->sexo"; //da igual que se ponga $nacemento en este punto
+        return  $this->nome ; //da igual que se ponga $nacemento en este punto. Importante: he tenido que hacer el método verInformación en dos partes porque
+        // misteriosamente el nombre (Pedro) se mostraba al final, en vez de al principio si se ejecutaba todo en el mismo método.
+    }
+
+    public function verInformación2()
+    {
+        return  $this->diasVivo() . "<br/> $this->sexo"; 
     }
 
     public function diasVivo()
@@ -92,22 +98,22 @@ class Persoa
         $df = $d1->diff($d2);
 
         $str = '';
-        $str .= 'ten ';
+        $str .= ' ten ';
 
         $str .= ($df->invert == 1) ? ' - ' : '';
         if ($df->y > 0) {
             // anos
-            $str .= ($df->y > 1) ? $df->y . '  anos ' : $df->y . ' ano ';
+            $str .= ($df->y > 1) ? $df->y . '  anos, ' : $df->y . ' ano, ';
         }if ($df->m > 0) {
             // meses
-            $str .= ($df->m > 1) ? $df->m . ' meses ' : $df->m . ' mes ';
+            $str .= ($df->m > 1) ? $df->m . ' meses, ' : $df->m . ' mes, ';
         }if ($df->d > 0) {
             // días
-            $str .= ($df->d > 1) ? $df->d . ' días ' : $df->d . ' día';
+            $str .= ($df->d > 1) ? $df->d . ' días' : $df->d . ' día';
             //var_dump($d1);
         }
 
-        $str .= ", un total de $dias_diferencia días";
+        $str .= ", un total de $dias_diferencia días.";
 
         //$str.= ', un total de '.(strtotime($d1)-strtotime($d2))/86400; //strtotime trabaja con strings no con objetos
         //$str.=' días';
@@ -173,7 +179,7 @@ $date1 = DateTime::createFromFormat('Y-m-d',"1990-04-02");
 
 $persoa1 = new Persoa('Pedro', $date1);
 var_dump($persoa1);
-
+echo "<br/>";
 echo $persoa1->nome . " ";
 $persoa1->diasVivo();
 echo "<br/>";
@@ -182,7 +188,8 @@ echo $persoa1->sexo;
 //$diff = $date1->diff($date2);
 echo "<br/>";
 echo "<br/>";
-echo "<br/> --------*******************";
-echo $persoa1->verInformación();
+echo "<br/> --------*******************<br>";
+echo $persoa1->verInformación1();
+echo $persoa1->verInformación2();
 
 //var_dump($date1);
