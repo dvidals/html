@@ -6,7 +6,7 @@ Queremos xestionar unha academia de baile. Para elo, temos que gardar informaci�
 De ambos queremos saber o seu nome, apelidos, móbil. Dos profesores ademais queremos almacenar o NIF para o cal chamarán ao método construtor de Persoa 
 ademais de almacenar o NIF.
 Temos que declarar as seguintes clases:
-A clase  Persoa  debe ter un método verInformación que devolve para a información coseguinte formato: Uxia Loureiro Agra (699444999) 
+A clase  Persoa  debe ter un método verInformación que devolve para a información co seguinte formato: Uxia Loureiro Agra (699444999) 
 A clase Alumno ten dous métodos: setNumClases e aPagar, e debe empregar o métodoconstrutor de Persoa.
   –O método aPagar devolverá o importe e pagan en función do número de actividades nas que se inscriben:
      Por unha actividade: 20 euros
@@ -53,7 +53,8 @@ class Persoa{
     }
 
     public function __toString(){
-      echo "$this->nome  $this->apelidos ($this->telefono)";
+      //echo "$this->nome  $this->apelidos ($this->telefono)";
+      return $this->verInformación();
   }
 
 }
@@ -183,8 +184,9 @@ final class Profesor extends Persoa {
 
     public function __toString()
     {
-        return $this->nomeBaile;
-        return ($this->idadeMínima);
+        //return $this->nomeBaile;
+        //return ($this->idadeMínima);
+        return $this->verInformación();
     }
       
      

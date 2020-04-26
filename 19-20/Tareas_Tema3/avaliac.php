@@ -1,11 +1,8 @@
 <?php
 
 /* 
-<<<<<<< HEAD
 
-=======
  
->>>>>>> 5817475a4e3fadc7815d0e5b2eecd6ab35012a76
 1.3.7. Avaliación:
 Queremos   xestionar   os   salarios   dos   nosos   empregados.   Para   elo,   temos   que   gardar
 información tanto dos empregados asalariados como dos empregados que contratamos por horas.
@@ -21,7 +18,6 @@ por hora) na porcentaxe que se lle teña indicado no construtor. Esta porcentaxe
 construtor.
 -Utiliza métodos máxicos para cargar as clases e para facer os set e get dos atributos.
 -Crea unha interface Comparar cun método de nome comparar cun parámetro.
-<<<<<<< HEAD
 +O empregado por horas ten un método comparar que recibe outro empregado e indica no caso de que o outro empregado 
 tamén sexa por horas, a diferenza de horas entre os dous empregados
 +O   método   comparar   comprobará   que   o   obxecto   recibido   é   de   tipo   empregado   por horas, 
@@ -40,27 +36,6 @@ en caso contrario lanzará unha excepción indicándoo.
 
 interface Comparar {
     public function comparar($parametro);
-=======
-    +O empregado por horas ten un método comparar que recibe outro empregado e indica no caso de que o outro empregado 
-    tamén sexa por horas, a diferenza de horas entre os dous empregados
-    +O   método   comparar   comprobará   que   o   obxecto   recibido   é   de   tipo   empregado   por horas, 
-    en caso contrario lanzará unha excepción indicándoo.
--Fai un exemplo onde se compare dous empregados utilizando o método comparar.Para probalo debes facer o seguinte:
-    +Crea un array de empregados con dous empregados como mínimo de cada tipo.
-    +A   continuación   debes   mostrar   a   información   seguinte   empregando   os   métodos creados. Por exemplo:
-        
-        En total temos 4 empregados.
-        O empregado Ana Fouz Vila é un empregado asalariado que cobra 2.308,57 euros este mes.
-        O empregado Lois Gómez Vilariño é un empregado contratado por horas que cobra 700,00 euros este mes.
-        O empregado Laura Martínez Vázquez é un empregado contratado por horas que cobra 765,00 euros este mes.
-        O empregado Anita Pérez Vila é un empregado asalariado que cobra 2.071,43 euros este mes.
-        Lois Gómez Vilariño traballou 2 horas menos que Laura Martínez Vázquez.
-    */
-
-    interface Comparar {
-        public function comparar($parametro);
-            
->>>>>>> 5817475a4e3fadc7815d0e5b2eecd6ab35012a76
         
     
 }
@@ -90,7 +65,6 @@ abstract class Empregado{
         return "this->$nome this->$apelidos. <br/>";
     }
 
-<<<<<<< HEAD
     public function comparar(Empregado $empregado){
         if($empregado instanceof Empregado){   
         }  
@@ -112,31 +86,6 @@ function mostrarInformacion(){
 
 
 }
-=======
-   abstract class Empregado{
-       //static protected $nome;
-       protected $nome;
-       protected $apelidos;
-       protected $NSS;
-       protected $empregados=array();
-
-        abstract function salarioMes();
-        abstract function incrementarSalario();
-        
-       function __construct($nome,$apelidos,$NSS){
-           $this->nome=$nome;
-           $this->apelidos=$apelidos;
-           $this->NSS=$NSS;
-           
-           
-       }
-   
- 
-        function __toString()
-        {
-            return "this->$nome this->$apelidos. <br/>";
-        }
->>>>>>> 5817475a4e3fadc7815d0e5b2eecd6ab35012a76
 
 function solucion(array $empregados){
     echo "<br/> En total temos ". count($empregados)." empregados.";
@@ -202,7 +151,6 @@ class Asalariados extends Empregado{
 
 
 
-<<<<<<< HEAD
  function __get($atributo){
   return $this->$atributo;
 }
@@ -219,7 +167,6 @@ function __set($atributo, $valor) {
 
 public function comparar(Asalariados $asalariados){
         if($asalariados instanceof Asalariados){   
-=======
         public function __construct($nome,$apelidos,$NSS,$salario=Null,$incremento=Null){
              parent::__construct($nome, $apelidos,$NSS);
              $this->salario=$salario;
@@ -234,7 +181,6 @@ public function comparar(Asalariados $asalariados){
             parent:: $apelidos;
             parent:: $NSS;*/
             
->>>>>>> 5817475a4e3fadc7815d0e5b2eecd6ab35012a76
            
         }  
         else throw new CompararException;   
@@ -246,7 +192,6 @@ public function comparar(Asalariados $asalariados){
 
 }
 
-<<<<<<< HEAD
 
 
 
@@ -263,7 +208,6 @@ class PorHoras extends Empregado{
         $this->horas=$horas;
         $this->incremento=$incremento;
         
-=======
         function salarioMes(){
             return round($this->salario / 14,2) ;
             
@@ -282,7 +226,6 @@ class PorHoras extends Empregado{
     
      function __get($atributo){
       return $this->$atributo;
->>>>>>> 5817475a4e3fadc7815d0e5b2eecd6ab35012a76
     }
     
     function __set($atributo, $valor) {
@@ -312,7 +255,6 @@ class PorHoras extends Empregado{
     
 
 
-<<<<<<< HEAD
     function salarioMes(){
         return $this->importe * $this->horas;
         
@@ -387,7 +329,6 @@ echo $h1->comparar($h2);
 
 
  
-=======
     class PorHoras extends Empregado{
 
         protected $importe;
@@ -476,4 +417,3 @@ echo $h1->comparar($h2);
     
 
      
->>>>>>> 5817475a4e3fadc7815d0e5b2eecd6ab35012a76
