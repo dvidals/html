@@ -38,17 +38,23 @@
  $resultados=mysqli_query($conexion,$consulta);
  
  while ($fila=mysqli_fetch_array($resultados, MYSQLI_ASSOC)){
-    echo "<table><tr><td>";
-    echo $fila['Dorsal']."</td><td>";
-    echo $fila['Nombre']."</td><td>";
-    echo $fila['Apellidos']."</td><td>";
-    echo $fila['Federado']."</td><td>";
-    echo $fila['Licencia']."</td><td>";
-    echo $fila['Categoria_Prueba']."</td><td>";
-    echo $fila['Sexo']."</td><td>";
-    echo $fila['FechaNac']."</td><td>";
-    echo $fila['Club']."</td><td>";
-    echo $fila['Equipo']."</td><td></tr></table>";
+    //echo "<table><tr><td>";
+    echo "<form action='Actualizar.php' method='get'>";
+    
+    echo "<input type='text' name='dorsal' value='".$fila['Dorsal']."'><br>";
+    echo "<input type='text' name='nombre' value='".$fila['Nombre']."'><br>";
+    echo "<input type='text' name='apellidos' value='".$fila['Apellidos']."'><br>";
+    echo "<input type='text' name='federado' value='".$fila['Federado']."'><br>";
+    echo "<input type='text' name='licencia' value='".$fila['Licencia']."'><br>";
+    echo "<input type='text' name='categoria' value='".$fila['Categoria_Prueba']."'><br>";
+    echo "<input type='text' name='sexo' value='".$fila['Sexo']."'><br>";
+    echo "<input type='text' name='fechanac' value='".$fila['FechaNac']."'><br>";
+    echo "<input type='text' name='club' value='".$fila['Club']."'><br>";
+    echo "<input type='text' name='equipo' value='".$fila['Equipo']."'><br>";
+    
+    echo "<input type='submit' name='enviando' value='Actualizar!'>";
+
+    echo "</form>";
     echo "<br>";
 
 
