@@ -9,7 +9,7 @@ final class Profesor extends Persoa {
         parent::__construct($nom, $ape, $mobil);
         $this->nif=$nif;
     }
-     //o importe da hora podería non indicarse
+     //o importe da hora poderÃ­a non indicarse
     public function calcularSoldo($horas,$importeHora=16) {
         return $horas*$importeHora;
     }

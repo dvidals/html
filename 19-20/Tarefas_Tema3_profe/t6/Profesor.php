@@ -15,7 +15,7 @@ final class Profesor extends Persoa implements Comparar{
         $this->idade=$idade;
     }
 
-     //o importe da hora poder�a non indicarse
+     //o importe da hora podería non indicarse
     public function calcularSoldo($horas,$importeHora=16) {
         return $horas*$importeHora;
     }
@@ -53,13 +53,18 @@ final class Profesor extends Persoa implements Comparar{
         return parent::verInformacion().' - ['.$this->idade.' anos]';
 
     }    
+
+    public function __toString()
+    {
+     return $this->verinformacion();
+    }
     public function comparar($value) {
         try {
             if (!$value instanceof Profesor) {
-                throw new Exception('Non � un profesor');
+                throw new Exception('Non é un profesor');
             } else {
                  if ($this->idade > $value->idade) {
-                    return ' ten m�is anos que ';
+                    return ' ten máis anos que ';
                 }
                  elseif ($this->idade < $value->idade) {
                     return ' ten menos anos que ';
@@ -67,7 +72,26 @@ final class Profesor extends Persoa implements Comparar{
                 return ' ten a mesma idade que ';
             }
         } catch (Exception $e) {
-                echo 'Excepci�n capturada: ',  $e->getMessage(), "\n";
+                echo 'Excepción capturada: ',  $e->getMessage(), "\n";
+        }
+    }
+
+    public function comparar2($value) {
+        $dif_anos=abs($this->idade - $value->idade);
+        try {
+            if (!$value instanceof Profesor) {
+                throw new Exception('Non é un profesor');
+            } else {
+                 if ($this->idade > $value->idade) {
+                    return " ten $dif_anos anos máis anos que ";
+                }
+                 elseif ($this->idade < $value->idade) {
+                    return " ten $dif_anos anos menos que ";
+                }
+                return ' ten a mesma idade que ';
+            }
+        } catch (Exception $e) {
+                echo 'Excepción capturada: ',  $e->getMessage(), "\n";
         }
     }
 }

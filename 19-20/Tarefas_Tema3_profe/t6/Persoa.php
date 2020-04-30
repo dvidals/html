@@ -14,6 +14,11 @@ class Persoa {
     {
         return $this->nome.' '.$this->apelidos.' ('.$this->mobil.')';
     }
+
+    public function __toString()
+    {
+     return $this->verinformacion();
+    }
 }
 ?>
 

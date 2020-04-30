@@ -11,7 +11,7 @@ final class Alumno extends Persoa {
               elseif ($this->numClases===2) {return 32;}
               else {return 40;}
         }
-        else { return 'Debe indicar previamente o número de clases';}
+        else { return 'Debe indicar previamente o nÃºmero de clases';}
     }
 }
 
