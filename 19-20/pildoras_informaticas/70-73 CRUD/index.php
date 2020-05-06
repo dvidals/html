@@ -19,7 +19,36 @@ include ("conexion.php");
 
 //Las dos líneas de código anteriores se pueden hacer en un único paso, el siguiente:
 
-$registros=$base->query("select * from datos_usuarios")->fetchAll(PDO::FETCH_OBJ);
+//-------------------PAGINACIÓN-----------------------
+
+$contador=0;
+  $limite=3;
+
+    if (isset($_GET["pagina"])){
+    if($_GET["pagina"]==1)header("Location:index.php");
+    else $pagina=$_GET["pagina"];
+    }else $pagina=1;
+  
+  
+  $sql_total="select * from datos_usuarios";
+
+  $resultado=$base->prepare($sql_total);
+  $resultado->execute(array());
+  $num_filas=$resultado->rowCount();//si utilizase esta variable en vez de contador me ahorraría el primer bucle while.
+  $total_paginas=$num_filas/$limite;
+
+  $paginas=ceil($num_filas/$limite);
+  $inicio=($pagina-1)*$limite;
+
+  while($registro=$resultado->fetch(PDO::FETCH_ASSOC)){
+    $contador++;
+
+  }
+
+  //--------------------------------------------------
+
+
+$registros=$base->query("select * from datos_usuarios limit $inicio,$limite")->fetchAll(PDO::FETCH_OBJ);
 
 if(isset($_POST['cr'])){
 
@@ -90,7 +119,16 @@ if(isset($_POST['cr'])){
       <td><input type='text' name='Nom' size='10' class='centrado'></td>
       <td><input type='text' name='Ape' size='10' class='centrado'></td>
       <td><input type='text' name=' Dir' size='10' class='centrado'></td>
-      <td class='bot'><input type='submit' name='cr' id='cr' value='Insertar'></td></tr>    
+      <td class='bot'><input type='submit' name='cr' id='cr' value='Insertar'></td></tr>
+      <tr><td></td><td colspan=3>Página <?php
+//----------------------PAGINACIÓN-----------------
+  for($i=1;$i<=$paginas;$i++){
+
+echo "<a href='?pagina=".$i. "'>".$i."</a> ";
+}
+
+?>
+</td></tr>    
   </table>
 
   </form>
