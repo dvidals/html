@@ -21,7 +21,7 @@ include ("conexion.php");
 
 //-------------------PAGINACIÓN-----------------------
 
-$contador=0;
+//$contador=0;
   $limite=3;
 
     if (isset($_GET["pagina"])){
@@ -40,11 +40,11 @@ $contador=0;
   $paginas=ceil($num_filas/$limite);
   $inicio=($pagina-1)*$limite;
 
-  while($registro=$resultado->fetch(PDO::FETCH_ASSOC)){
+ /* while($registro=$resultado->fetch(PDO::FETCH_ASSOC)){
     $contador++;
 
   }
-
+*/
   //--------------------------------------------------
 
 
@@ -72,6 +72,7 @@ if(isset($_POST['cr'])){
 ?>
 
 <h1>CRUD<span class="subtitulo">Create Read Update Delete</span></h1>
+
 
 <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
 
