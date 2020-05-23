@@ -26,7 +26,7 @@ require "configuracion.php";
     echo "Fallo al conectar con la BBDD";
     exit(); //para que no siga ejecutando el resto del código de abajo
  }
-
+/*
  mysqli_select_db($conexion,$db_nombre) or die ("No se encuentra la BBDD");
  
  mysqli_set_charset($conexion, "utf8"); //para el español, tildes y eñes.
@@ -36,5 +36,5 @@ require "configuracion.php";
 
  $resultados=mysqli_query($conexion,$sql);
 
-
+*/
 ?>
