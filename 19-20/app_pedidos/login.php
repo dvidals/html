@@ -1,6 +1,7 @@
 <?php
 
 require_once 'bd.php';
+error_reporting(E_ALL ^ E_NOTICE);
 /*formulario de login habitual
 si va bien abre sesión, guarda el nombre de usuario y redirige a principal.php 
 si va mal, mensaje de error */

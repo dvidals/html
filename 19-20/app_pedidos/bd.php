@@ -360,7 +360,7 @@ function insertar_pedido($carrito, $codRes){
 		}
 		
 		$nuevo_stock=$stock-$unidades;
-		echo $nuevo_stock."</br>";
+		//echo $nuevo_stock."</br>";
 		$sql = "update productos set Stock=$nuevo_stock where CodProd=$codProd";			
 		 $resul = $bd->query($sql);	
 		 //var_dump($resul);

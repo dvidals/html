@@ -1,35 +1,71 @@
 <?php
 
 require_once 'bd.php';
+error_reporting(E_ALL ^ E_NOTICE);
 /*formulario de login habitual
 si va bien abre sesión, guarda el nombre de usuario y redirige a principal.php 
 si va mal, mensaje de error */
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {  
 	
-	$usu = comprobar_usuario(htmlentities(addslashes($_POST['usuario'])), htmlentities(addslashes($_POST['clave'])));
-	if($usu===false){
+		$tipo=comprobar_tipo($_POST['usuario']);
+		if($tipo['tipo']=="Administrador"){
+			echo "El tipo es".$tipo."<br>";
+			//$usu=comprobar_usario($_POST['usuario'], $_POST['clave']);
+			$usu = comprobar_usuario(htmlentities(addslashes($_POST['usuario'])), htmlentities(addslashes($_POST['clave'])));
+			if($usu===false){
 		$err = true;
 		$usuario = $_POST['usuario'];
-	}else{
-		session_start();
+			}else{
+				session_start();
 		 //$usu tiene campos correo y codRes, correo 
 		$_SESSION['usuario'] = $usu;
 		$_SESSION['carrito'] = [];
-		if ($usu['tipo']=="Administrador"){
 			header ("Location:categorias_admin.php");
 			return;
+				
+				
+			}
+			
+		}
+		
+	
+	else{
+		
+		$modificada=comprobar_modificada($_POST['usuario']);
+		if($modificada['modificada']==0){
+			$usu = comprobar_usuario(htmlentities(addslashes($_POST['usuario'])), htmlentities(addslashes($_POST['clave'])));
+			if($usu===false){
+		$err = true;
+		$usuario = $_POST['usuario'];
+		
+			}else{
+				session_start();
+				//$usu tiene campos correo y codRes, correo 
+				$_SESSION['usuario'] = $usu;
+				$_SESSION['carrito'] = [];
+				header ("Location:cambiar_clave.php");
+				return;
+				
+			}
+			
 			
 		}else{
-			if($usu['tipo']=="Restaurante" and $usu['modificada']==0){
-				
-			header ("Location:cambiar_clave.php");
-			return;
-			}else{ 
-		header("Location: categorias.php");
-		return;
-			}
+			
+			$usu = comprobar_usuario_encriptado($_POST['usuario'], $_POST['clave']);
+			if($usu===false){
+			$err = true;
+			$usuario = $_POST['usuario'];
+			}else{
+				session_start();
+				//$usu tiene campos correo y codRes, correo 
+				$_SESSION['usuario'] = $usu;
+				$_SESSION['carrito'] = [];
+				header("Location: categorias.php");
+				return;	
+			
 		}
+	}
 	}	
 }
 ?>
