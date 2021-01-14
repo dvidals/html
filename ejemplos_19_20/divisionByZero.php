@@ -1,5 +1,5 @@
 <?php
-//Comentario de prueba
+//Comentario de pr
 function modulo($dividend, $divisor) {
     try {
         $result = $dividend % $divisor;
