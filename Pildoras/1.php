@@ -16,7 +16,7 @@ if (isset($_POST["button"])){
 		calculo($operacion, $n1, $n2);
 }
 
-function calculo ($oper, $numero1, $numero2){
+function calculo ($oper, $numero1, $numero2=1){
 	
 	if (!strcmp("Suma",$oper)){
 		$resultado=$numero1+$numero2;
@@ -41,6 +41,16 @@ function calculo ($oper, $numero1, $numero2){
 	
 	if (!strcmp("Módulo",$oper)){
 		$resultado=$numero1%$numero2;
+		echo "<p class='resultado'>El resultado de la operación es $resultado</p>";
+	}
+
+	if (!strcmp("Incremento",$oper)){
+		$resultado=$numero1++;
+		echo "<p class='resultado'>El resultado de la operación es $resultado</p>";
+	}
+
+	if (!strcmp("Decremento",$oper)){
+		$resultado=$numero1--;
 		echo "<p class='resultado'>El resultado de la operación es $resultado</p>";
 	}
 	
