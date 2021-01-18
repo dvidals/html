@@ -45,12 +45,12 @@ function calculo ($oper, $numero1, $numero2=1){
 	}
 
 	if (!strcmp("Incremento",$oper)){
-		$resultado=$numero1++;
+		$resultado=++$numero1;
 		echo "<p class='resultado'>El resultado de la operación es $resultado</p>";
 	}
 
 	if (!strcmp("Decremento",$oper)){
-		$resultado=$numero1--;
+		$resultado=--$numero1;
 		echo "<p class='resultado'>El resultado de la operación es $resultado</p>";
 	}
 	
