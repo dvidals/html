@@ -23,7 +23,7 @@ function calculo ($oper, $numero1, $numero2){
 	
 	if (!strcmp("Multiplicación",$oper)){
 		$resultado=$numero1*$numero2;
-		echo "El resultado es $resultado";
+		echo "El resultado es de la operación es $resultado";
 	}
 	
 	if (!strcmp("División",$oper)){
