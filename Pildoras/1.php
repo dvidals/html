@@ -20,28 +20,28 @@ function calculo ($oper, $numero1, $numero2){
 	
 	if (!strcmp("Suma",$oper)){
 		$resultado=$numero1+$numero2;
-		echo "<p clas='resultado'>El resultado de la operación es $resultado</p>";
+		echo "<p class='resultado'>El resultado de la operación es $resultado</p>";
 	}
 	
 	
 	if (!strcmp("Resta",$oper)){
 		$resultado=$numero1-$numero2;
-		echo "<p clas='resultado'>El resultado de la operación es $resultado</p>";
+		echo "<p class='resultado'>El resultado de la operación es $resultado</p>";
 	}
 	
 	if (!strcmp("Multiplicación",$oper)){
 		$resultado=$numero1*$numero2;
-		echo "<p clas='resultado'>El resultado es de la operación es $resultado</p>";
+		echo "<p class='resultado'>El resultado es de la operación es $resultado</p>";
 	}
 	
 	if (!strcmp("División",$oper)){
 		$resultado=$numero1/$numero2;
-		echo "<p clas='resultado'>El resultado es de la operación es $resultado</p>";
+		echo "<p class='resultado'>El resultado es de la operación es $resultado</p>";
 	}
 	
 	if (!strcmp("Módulo",$oper)){
 		$resultado=$numero1%$numero2;
-		echo "<p clas='resultado'>El resultado de la operación es $resultado</p>";
+		echo "<p class='resultado'>El resultado de la operación es $resultado</p>";
 	}
 	
 }		
