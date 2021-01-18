@@ -1,3 +1,11 @@
+<style>
+
+.resultado{
+		font-size:38px;
+		color:#F00;
+		font-weight:bold;
+	}
+</style>
 <?php
 
 if (isset($_POST["button"])){
@@ -12,28 +20,28 @@ function calculo ($oper, $numero1, $numero2){
 	
 	if (!strcmp("Suma",$oper)){
 		$resultado=$numero1+$numero2;
-		echo "El resultado de la operación es $resultado";
+		echo "<p clas='resultado'>El resultado de la operación es $resultado</p>";
 	}
 	
 	
 	if (!strcmp("Resta",$oper)){
 		$resultado=$numero1-$numero2;
-		echo "El resultado de la operación es $resultado";
+		echo "<p clas='resultado'>El resultado de la operación es $resultado</p>";
 	}
 	
 	if (!strcmp("Multiplicación",$oper)){
 		$resultado=$numero1*$numero2;
-		echo "El resultado es de la operación es $resultado";
+		echo "<p clas='resultado'>El resultado es de la operación es $resultado</p>";
 	}
 	
 	if (!strcmp("División",$oper)){
 		$resultado=$numero1/$numero2;
-		echo "El resultado es de la operación es $resultado";
+		echo "<p clas='resultado'>El resultado es de la operación es $resultado</p>";
 	}
 	
 	if (!strcmp("Módulo",$oper)){
 		$resultado=$numero1%$numero2;
-		echo "El resultado de la operación es $resultado";
+		echo "<p clas='resultado'>El resultado de la operación es $resultado</p>";
 	}
 	
 }		
