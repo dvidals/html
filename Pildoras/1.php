@@ -18,7 +18,7 @@ function calculo ($oper, $numero1, $numero2){
 	
 	if (!strcmp("Resta",$oper)){
 		$resultado=$numero1-$numero2;
-		echo "El resultado es $resultado";
+		echo "El resultado de la operación es $resultado";
 	}
 	
 	if (!strcmp("Multiplicación",$oper)){
