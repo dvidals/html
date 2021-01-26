@@ -1,7 +1,19 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Documento sin título</title>
+<title>Vídeo 36</title>
+<style>
+    table, th, tr, td{
+        width: 50%;
+        border: 2px solid #FF0000;
+        margin:auto;
+    }
+
+    td {
+        color:blue;
+    }
+
+</style>
 </head>
 <body>
 <?php
@@ -23,18 +35,21 @@ mysqli_select_db($conexion,$db_nombre) or die("No se encuentr la BBDD");
 
 mysqli_set_charset($conexion,"utf8"); //para que muestre bien las tildes, etc. (caracteres latinos);
 
-$consulta="select * from pintor"; /* where npintor='Picasso'";*/
+$consulta="select * from pintor where (PaisPintor='España' AND NPintorMaestro is null) order by CiudadPintor desc limit 3"; /* where npintor='Picasso'";*/
 
 $resultados=mysqli_query($conexion,$consulta);
 $fila=mysqli_fetch_row($resultados);
-
+echo "<table>";
+echo"<tr><th>Npintor</th><th>Ciudadpintor</th><th>PaisPintor</th><th>Fnac</th><th>Ffall</th><th>NombreE</th><th>NPintorMaestro</th></tr>";
 foreach($resultados as $fila){
+    echo "<tr>";
     foreach ($fila as $valor2){
-        echo $valor2. " ";
+        echo "<td>$valor2</td>";
     }
-    echo "<br/>";
+    echo "</tr>";
 
 }
+echo "</table>";
 
 /* otra forma
 while ($fila=mysqli_fetch_row($resultados)==true){
