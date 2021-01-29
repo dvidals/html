@@ -43,7 +43,7 @@ $resultados=mysqli_query($conexion,$consulta);
 //$fila=mysqli_fetch_array($resultados,MYSQLI_ASSOC); La de abajo es equivalente a la del video 36 (36.php) y a está. Es equivalenta
 // a mysqli_fetch_assoc(), y a mysqli_fetch_row().
 
-$fila=mysqli_fetch_array($resultados); // Es igual cuando no se pone el seundo parámetro a : $fila=mysqli_fetch_array($resultados,MYSQLI_BOTH);
+$fila=mysqli_fetch_array($resultados); // Es igual cuando no se pone el segundo parámetro a : $fila=mysqli_fetch_array($resultados,MYSQLI_BOTH);
 
 
 echo "<table>";
