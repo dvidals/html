@@ -1,7 +1,6 @@
 <?php
 
-$base=new PDO('mysql:host=localhost; dbname=pinacoteca','root','');
-$base->exec("SET CHARACTER SET UTF8");
+require_once ("Conectar.php");
 
 $tamano_paginas=15;
 
@@ -18,7 +17,7 @@ $tamano_paginas=15;
 
     $empezar_desde=($pagina-1)*$tamano_paginas;
     $sql_total="SELECT * FROM cuadro";
-    $resultado=$base->prepare($sql_total);
+    $resultado=Conectar::conexion()->prepare($sql_total);
     $resultado->execute(array());
     $num_filas=$resultado->rowCount();
     $total_paginas=ceil($num_filas/$tamano_paginas);
