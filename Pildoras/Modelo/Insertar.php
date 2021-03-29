@@ -18,17 +18,18 @@ class Insertar{
         $pint=$_POST['pint'];
         $pina=$_POST['pina'];
         $sala=$_POST['sala'];
+        $numero=$_POST['numero'];
         
         
 
     
-    $sql = "insert into  cuadro(CodCuadro, NCuadro, Alto, Ancho, Fcuadro, Tecnica, NPintor, NPinacoteca, numsala)
-     values (:cod, :cua, :alt, :anc, :fec, :tec, :pint, :pina, :sala)";    
+    $sql = "insert into  cuadro(CodCuadro, NCuadro, Alto, Ancho, Fcuadro, Tecnica, NPintor, NPinacoteca, numsala, NumerodeCopias)
+     values (:cod, :cua, :alt, :anc, :fec, :tec, :pint, :pina, :sala, :numero)";    
     $resultado=Conectar::conexion()->prepare($sql);
     $resultado->execute(array(":cod"=>$codi, ":cua"=>$cua, ":alt"=>$alt, ":anc"=>$anc, ":fec"=>$fec, ":tec"=>$tec, ":pint"=>$pint, ":pina"=>$pina,
-    ":sala"=>$sala));
+    ":sala"=>$sala, ":numero"=>$numero));
 
-    header ("Location:../index.php");
+    header ("Location:../paginacion.php");
 
     }
 

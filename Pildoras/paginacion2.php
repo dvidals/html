@@ -61,6 +61,19 @@ try{
         
     }
 
+    
+        global $arrayTot;
+        if(isset($_GET['ArrayTot'])){
+        $arrayTot=unserialize($_GET['ArrayTot']);
+        }
+        
+        else $arrayTot=array();
+      // var_dump($arrayTot);
+     
+
+    
+        
+
 
     //$porPagina=10;
     $matrizCuadros=array();
@@ -105,7 +118,20 @@ try{
             <td class="sin">&nbsp;</td>
         </tr>
     <?php
-   
+     error_reporting(E_ALL ^ E_NOTICE);
+     function agregar($uno,$dos,$tres,$cuatro,$cinco,$seis,$siete){
+        
+       echo"
+       <a href='Modelo/Carrito2.php?
+       uno[]=<?php echo $uno?> &  dos[]=<?php echo $dos?>
+        &  tres[]=<?php echo $tres?> &  cuatro[]=<?php echo $cuatro?>
+       &  cinco[]=<?php echo $cinco?>&  seis[]=<?php echo $seis?> &  siete[]=<?php echo $siete?>>
+        
+        ";
+    }
+
+    //global $contador;
+    //$contador=0;
     foreach ($matrizCuadros as $cuadros):?>
     
         <tr>
@@ -127,12 +153,63 @@ try{
             & Tec=<?php echo $cuadros["Tecnica"]?> & Pint=<?php echo $cuadros["NPintor"]?> & Pina=<?php echo $cuadros["NPinacoteca"]?>
             & Sala=<?php echo $cuadros["numsala"]?> & Numero=<?php echo $cuadros["NumeroDeCopias"]?>">
             <input type='button' name='up' id='up' value='Actualizar'></a></td>
-            <td class="bot"> <a href="Modelo/Carrito.php?
-            Cod=<?php echo $cuadros["CodCuadro"]?> & Cua=<?php echo $cuadros["Ncuadro"]?>
-            & Alt=<?php echo $cuadros["Alto"]?> & Anc=<?php echo $cuadros["Ancho"]?> & Fec=<?php echo $cuadros["Fcuadro"]?>
-            & Tec=<?php echo $cuadros["Tecnica"]?> & Pint=<?php echo $cuadros["NPintor"]?> & Pina=<?php echo $cuadros["NPinacoteca"]?>
-            & Sala=<?php echo $cuadros["numsala"]?>& Numero=<?php echo $cuadros["NumeroDeCopias"]?> & Cont=<?php $cont=1;echo $cont?>">
-            <input type='button' name='up' id='up' value='Añadir'></a></td>
+            <td class="bot"> <a href="Modelo/Carrito2.php?
+            ArrayTot=<?php echo urlencode(serialize($arrayTot))?>
+            & Cod=<?php echo $cuadros["CodCuadro"]?> & Cua=<?php echo $cuadros["Ncuadro"]?>
+             & Pint=<?php echo $cuadros["NPintor"]?> & Pina=<?php echo $cuadros["NPinacoteca"]?>
+            & Sala=<?php echo $cuadros["numsala"]?>& Numero=<?php echo $cuadros["NumeroDeCopias"]?>
+            & Cont=<?php $cont=1;echo $cont?>
+            ">
+
+            <input type='button' name='up' id='up' value='Añadir'>
+            </a>
+            <?php
+            /*
+            echo '<td class="bot">'. "<a href='Modelo/Carrito2.php?ArrayTot=". urlencode(serialize($arrayTot))."
+            & Cod=". $cuadros['CodCuadro']." & Cua=". $cuadros['Ncuadro']."
+             & Pint=". $cuadros['NPintor']." & Pina=". $cuadros["NPinacoteca"]."
+            & Sala=".  $cuadros['numsala']." & Numero=".$cuadros['NumeroDeCopias']."
+            & Contador=". $contador." & Cont=".$cont."'".
+            
+            ">
+
+            <input type='button' name='up' id='up' value='Añadir'>
+            </a>
+            </td>";
+            */
+            ?>
+            
+            <?php
+            /*
+                $existe=false;
+                for ($i=0;$i<count($_POST["uno"]);$i++){
+                    $uno=$_GET["uno"][$i];
+                    $dos=$_GET["dos"][$i];
+                    $tres=$_GET["tres"][$i];
+                    $cuatro=$_GET["cuatro"][$i];
+                    $cinco=$_GET["cinco"][$i];
+                    $seis=$_GET["seis"][$i];
+                    $siete=$_GET["siete"][$i];
+
+                    if ($uno==trim($cuadros["CodCuadro"])){
+                        ++$siete;
+                    }
+
+                    if ($uno!=null){
+                        agregar($uno, $dos, $tres, $cuatro, $cinco, $seis,$siete);
+                    }
+
+                }
+
+                if(!$existe){
+                    agregar($cuadros["CodCuadro"],$cuadros["Ncuadro"],$cuadros["NPintor"],$cuadros["Ninacoteca"],$cuadros["numsala"],$cuadros["NumeroDeCopias"], $cont );
+                }
+
+               */
+                
+
+            ?>
+            </td>
         </tr>
         <?php
         endforeach;
